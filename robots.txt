@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://qiaoqiao900829-prog.github.io/companysite/sitemap.xml
