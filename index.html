@@ -1,242 +1,366 @@
+下面是**可直接粘贴到 GitHub 仓库 `companysite/`** 的网站文件。按文件名逐一新建并保存（大小写需完全一致）。
+
+---
+
+## 1) `CNAME`
+```
+zuihoudou.com
+```
+> 说明：若 GitHub Pages 已在 Settings→Pages 中保存过自定义域名，会自动生成 `CNAME`；若仓库里还没有，建议手动添加此文件以确保域名绑定稳定。
+
+---
+
+## 2) `index.html`（根首页：自动按浏览器语言跳转＋可手动选择）
+```html
 <!doctype html>
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>瑞鳳堂株式会社｜公式サイト</title>
-  <meta name="description" content="瑞鳳堂株式会社：京都を拠点に、日中間の貿易・不動産サポート・翻訳通訳などのサービスを提供します。" />
-  <meta name="keywords" content="瑞鳳堂, 京都, 貿易, 不動産, 行政書士, 通訳, 代購" />
-  <meta property="og:title" content="瑞鳳堂株式会社｜公式サイト" />
-  <meta property="og:description" content="京都を拠点に日中間の貿易・不動産サポート等を提供。お問い合わせはお気軽に。" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>瑞鳳堂株式会社 | ZUIHOUDOU K.K.</title>
+  <meta name="description" content="瑞鳳堂株式会社：翻译服务、不动产咨询、日本商品直邮中国。京都与关西提供专业支援。">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="canonical" href="https://zuihoudou.com/" />
+  <link rel="alternate" href="https://zuihoudou.com/zh/" hreflang="zh" />
+  <link rel="alternate" href="https://zuihoudou.com/ja/" hreflang="ja" />
+  <link rel="alternate" href="https://zuihoudou.com/" hreflang="x-default" />
+  <meta property="og:title" content="瑞鳳堂株式会社 | ZUIHOUDOU K.K." />
+  <meta property="og:description" content="翻译服务 · 不动产咨询 · 日本直邮中国（京都＋关西）。" />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="/og-image.jpg" />
-  <meta property="og:url" content="https://example.com/" />
-  <link rel="icon" href="/favicon.ico" />
+  <meta property="og:url" content="https://zuihoudou.com/" />
+  <meta property="og:site_name" content="ZUIHOUDOU" />
   <style>
-    :root{
-      --bg:#0b1020;--card:#121a33;--muted:#9aa4c7;--brand:#5ee0f5;--brand2:#8ef6d0;--text:#eef4ff;--accent:#ffd166
-    }
+    :root{--bg:#0b1020;--card:#121a33;--text:#e6edf3;--muted:#94a3b8;--line:#1e293b;--brand:#89b4fa;--brand2:#a6e3a1}
     *{box-sizing:border-box}
-    html,body{margin:0;height:100%;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans","PingFang SC","Hiragino Sans",sans-serif;background:radial-gradient(1000px 600px at 10% -10%,#14204800 60%,#3bd6ff22 100%),radial-gradient(800px 400px at 120% -20%,#8ef6d022 40%,#14204800 100%),var(--bg);color:var(--text)}
-    a{color:var(--brand);text-decoration:none}
-    header{position:sticky;top:0;background:linear-gradient(180deg,#0b1020cc,#0b102000);backdrop-filter:saturate(150%) blur(8px);z-index:50}
-    nav{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:24px;padding:14px 20px}
-    .logo{display:flex;align-items:center;gap:10px;font-weight:700}
-    .logo-badge{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--brand),var(--brand2));display:grid;place-items:center;color:#08121c;font-weight:900}
-    .spacer{flex:1}
-    .btn{padding:10px 16px;border-radius:12px;border:1px solid #2a355a;background:#0e1530;color:var(--text);cursor:pointer;transition:.2s}
-    .btn:hover{transform:translateY(-1px);border-color:#3b4a7f}
-    .btn-primary{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#0b1020;border:none;font-weight:700}
-    .container{max-width:1100px;margin:0 auto;padding:28px 20px}
-    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center;padding:40px 0}
-    .hero h1{font-size:42px;line-height:1.1;margin:0}
-    .hero p{color:var(--muted);font-size:18px}
-    .hero-card{background:linear-gradient(180deg,#101938,#0b1020);border:1px solid #233058;border-radius:20px;padding:22px;box-shadow:0 10px 30px #00000044}
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .card{background:linear-gradient(180deg,#0e1630,#0b1020);border:1px solid #22305a;border-radius:18px;padding:18px;min-height:160px}
-    .card h3{margin:6px 0 8px;font-size:18px}
-    .muted{color:var(--muted)}
-    .section-title{font-size:28px;margin:30px 0 16px}
-    .badge{font-size:12px;color:#0b1020;background:var(--accent);padding:4px 8px;border-radius:999px;font-weight:700;display:inline-block}
-    .about{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-    .list{list-style:none;padding:0;margin:0}
-    .list li{display:flex;align-items:flex-start;gap:10px;margin:10px 0}
-    .list .dot{width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--brand2));margin-top:8px}
-    .contact{display:grid;grid-template-columns:1.2fr .8fr;gap:20px}
-    input,textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid #26345e;background:#0d1530;color:var(--text)}
-    form .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    footer{border-top:1px solid #233058;margin-top:30px}
-    .foot{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px}
-    .copyright{color:#7f8bb0;font-size:12px;text-align:center;padding:14px 0 32px}
-    .chip{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;border:1px solid #2a3761}
-    .chip .dot{width:8px;height:8px;border-radius:999px;background:linear-gradient(135deg,var(--brand),var(--brand2))}
-    .lang{display:flex;gap:8px;align-items:center}
-
-    @media (max-width: 920px){
-      .hero{grid-template-columns:1fr;}
-      .grid{grid-template-columns:1fr}
-      .about{grid-template-columns:1fr}
-      .contact{grid-template-columns:1fr}
-      .foot{grid-template-columns:1fr}
-    }
+    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;background:linear-gradient(180deg,#0b1020,#0b1028 60%);color:var(--text)}
+    header{position:sticky;top:0;background:#0b1028cc;backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line)}
+    .wrap{max-width:1100px;margin:auto;padding:16px 20px}
+    .row{display:flex;align-items:center;gap:14px;justify-content:space-between}
+    .pill{display:inline-block;font-size:12px;color:#0b1020;background:linear-gradient(90deg,var(--brand),var(--brand2));padding:4px 8px;border-radius:999px;margin-right:8px}
+    .lang a{padding:6px 10px;border:1px solid #334155;border-radius:8px;text-decoration:none;color:var(--text)}
+    .lang a:hover{border-color:#64748b}
+    .hero{padding:56px 20px 32px}
+    h1{font-size:28px;margin:0 0 12px}
+    .lead{color:var(--muted);line-height:1.7}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:22px}
+    .card{background:var(--card);border:1px solid #1f2a44;border-radius:14px;padding:18px}
+    .cta{display:inline-block;margin-top:16px;padding:10px 16px;border-radius:10px;border:1px solid #334155;text-decoration:none;color:var(--text);margin-right:10px}
+    .cta:hover{border-color:#64748b}
   </style>
+  <script>
+    // 首次访问按浏览器语言自动跳转
+    (function(){
+      try{
+        if(localStorage.getItem('langChosen')) return;
+        var lang=(navigator.language||navigator.userLanguage||'zh').toLowerCase();
+        if(lang.startsWith('ja')) location.replace('/ja/');
+        else location.replace('/zh/');
+        localStorage.setItem('langChosen','1');
+      }catch(e){}
+    })();
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"瑞鳳堂株式会社",
+    "alternateName":"ZUIHOUDOU K.K.",
+    "url":"https://zuihoudou.com/",
+    "logo":"https://zuihoudou.com/favicon.ico",
+    "email":"info@zuihoudou.com",
+    "address":{
+      "@type":"PostalAddress",
+      "addressLocality":"京都市左京区",
+      "addressRegion":"京都府",
+      "addressCountry":"JP"
+    },
+    "areaServed":["Kyoto","Kansai","Japan","China"]
+  }
+  </script>
 </head>
 <body>
   <header>
-    <nav>
-      <div class="logo"><div class="logo-badge">瑞</div>瑞鳳堂株式会社</div>
-      <div class="spacer"></div>
-      <div class="lang"><span class="chip"><span class="dot"></span> 简体中文</span><a class="muted" href="#">日本語</a><a class="muted" href="#">EN</a></div>
-      <a href="#contact" class="btn">联系</a>
-      <a href="#contact" class="btn btn-primary">免费咨询</a>
-    </nav>
+    <div class="wrap row">
+      <div><span class="pill">ZUIHOUDOU</span><strong>瑞鳳堂株式会社</strong></div>
+      <nav class="lang"><a href="/zh/">中文</a><a href="/ja/">日本語</a></nav>
+    </div>
   </header>
 
-  <main class="container">
-    <section class="hero">
-      <div>
-        <div class="badge">京都 · 貿易 / 不動産 / 通訳</div>
-        <h1>连接日本与中国的商业桥梁</h1>
-        <p>我们在京都为您提供跨境贸易、不动产事务所代办、翻译通译与电商上架等一站式服务。以诚信与速度，助您拓展日本与中国市场。</p>
-        <div style="display:flex;gap:10px;margin-top:16px">
-          <a class="btn btn-primary" href="#services">查看服务</a>
-          <a class="btn" href="#about">了解我们</a>
-        </div>
-        <div style="display:flex;gap:12px;margin-top:18px" class="muted">
-          <span class="chip"><span class="dot"></span> 公司注册于京都</span>
-          <span class="chip"><span class="dot"></span> 支持中文/日文/英文</span>
-        </div>
-      </div>
-      <div class="hero-card">
-        <h3 style="margin:8px 0 6px">快速联系</h3>
-        <p class="muted" style="margin:0 0 10px">留下您的信息，我们会在1个工作日内回复。</p>
-        <form action="mailto:info@example.com" method="post" enctype="text/plain">
-          <div class="row">
-            <input name="name" placeholder="您的称呼" required/>
-            <input name="email" type="email" placeholder="邮箱 (或微信)" required/>
-          </div>
-          <textarea name="message" rows="4" placeholder="简单描述您的需求…" style="margin-top:10px" required></textarea>
-          <div style="display:flex;gap:10px;margin-top:12px">
-            <button class="btn btn-primary" type="submit">发送</button>
-            <a class="btn" href="#contact">更多联系方式</a>
-          </div>
-        </form>
-      </div>
-    </section>
-
-    <section id="services">
-      <h2 class="section-title">我们的服务</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>跨境贸易与代购</h3>
-          <p class="muted">日本本土品牌正品采购、国际快递、B2C/B2B 出口。提供发票与正当贸易流程。</p>
-        </div>
-        <div class="card">
-          <h3>不动产与许可咨询</h3>
-          <p class="muted">事务所设立、宅建業申請の事前準備、古物商などの許認可アドバイス。</p>
-        </div>
-        <div class="card">
-          <h3>翻译与口译</h3>
-          <p class="muted">中文/日文/英文资料翻译，银行・不動産内見・役所手続の同行通訳。</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="about" style="margin-top:24px">
-      <h2 class="section-title">关于我们</h2>
-      <div class="about">
-        <div class="card">
-          <h3>公司简介</h3>
-          <p class="muted">瑞鳳堂株式会社（Ryuhodo Co., Ltd.）总部位于京都市。我们深谙日本法规与商业文化，擅长中日跨境项目落地执行。</p>
-          <ul class="list">
-            <li><span class="dot"></span> 法人与团队具备多语言沟通能力</li>
-            <li><span class="dot"></span> 对接京都・大阪・滋賀等区域资源</li>
-            <li><span class="dot"></span> 支持企业与个人客户</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>为什么选择我们</h3>
-          <ul class="list">
-            <li><span class="dot"></span> 合规：流程透明，重视合规与凭证保留</li>
-            <li><span class="dot"></span> 高效：明确节点，快速响应</li>
-            <li><span class="dot"></span> 定制：根据预算与目标提供可执行方案</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" style="margin-top:24px">
-      <h2 class="section-title">联系我们</h2>
-      <div class="contact">
-        <div class="card">
-          <h3>联系方式</h3>
-          <p class="muted">您可以通过以下任一方式与我们联系。</p>
-          <ul class="list">
-            <li><span class="dot"></span> 邮箱：<a href="mailto:info@example.com">info@example.com</a></li>
-            <li><span class="dot"></span> 电话：<a href="tel:+81-90-0000-0000">+81-90-0000-0000</a></li>
-            <li><span class="dot"></span> 地址：京都市南区（示例）</li>
-            <li><span class="dot"></span> 微信：example-wechat</li>
-            <li><span class="dot"></span> 营业时间：周一至周六 10:00–18:00（JST）</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>地图（可替换为真实位置）</h3>
-          <div style="position:relative;padding-top:56%;border-radius:12px;overflow:hidden;border:1px solid #22305a">
-            <iframe title="map" src="https://www.openstreetmap.org/export/embed.html?bbox=135.73%2C34.96%2C135.77%2C35.00&layer=mapnik" style="position:absolute;inset:0;border:0;width:100%;height:100%"></iframe>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="faq" style="margin-top:24px">
-      <h2 class="section-title">常见问题（FAQ）</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>我能自己维护网站吗？</h3>
-          <p class="muted">本页面为“单文件”模板，您可直接用任意文本编辑器修改文字与联系方式，然后上传至托管平台即可上线。</p>
-        </div>
-        <div class="card">
-          <h3>如何提高被搜索引擎收录？</h3>
-          <p class="muted">确保域名可访问、开启HTTPS、添加<title>与<meta>描述、生成sitemap.xml并在Google Search Console提交。</p>
-        </div>
-        <div class="card">
-          <h3>如何添加更多页面？</h3>
-          <p class="muted">复制本文件为 about.html / services.html 等，并在导航添加链接。保持每页包含相同的页眉与页脚。</p>
-        </div>
-      </div>
-    </section>
-
-    <footer class="container">
-      <div class="foot">
-        <div>
-          <div class="logo" style="margin-bottom:10px"><div class="logo-badge">瑞</div>瑞鳳堂株式会社</div>
-          <p class="muted">© <span id="y"></span> Ryuhodo Co., Ltd. All rights reserved.</p>
-        </div>
-        <div>
-          <h3 style="margin:6px 0 8px">快速链接</h3>
-          <ul class="list">
-            <li><span class="dot"></span> <a href="#services">服务</a></li>
-            <li><span class="dot"></span> <a href="#about">关于</a></li>
-            <li><span class="dot"></span> <a href="#contact">联系</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3 style="margin:6px 0 8px">法务信息</h3>
-          <ul class="list">
-            <li><span class="dot"></span> <a href="#">特定商取引法表記（示例）</a></li>
-            <li><span class="dot"></span> <a href="#">プライバシーポリシー（示例）</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="copyright">本页面为演示模板，文本与联系方式请按需替换。</div>
-    </footer>
+  <main class="wrap hero">
+    <h1>欢迎来到瑞鳳堂 / ようこそ瑞鳳堂へ</h1>
+    <p class="lead">我们已根据您的浏览器语言进行自动跳转；如未跳转，请手动选择上方语言。</p>
+    <div class="cards">
+      <div class="card"><h3>翻译服务</h3><p>现场口译 / 文书翻译 / 银行・法务・不动产手续陪同。</p></div>
+      <div class="card"><h3>不动产咨询</h3><p>京都与关西地区的租赁、买卖、投资与手续支援。</p></div>
+      <div class="card"><h3>日本商品直邮中国</h3><p>正品采购，规范清关，稳定运输。</p></div>
+    </div>
+    <p>
+      <a class="cta" href="/zh/#contact">联系（中文）</a>
+      <a class="cta" href="/ja/#contact">お問い合わせ（日本語）</a>
+    </p>
   </main>
 
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear()
-  </script>
-
-  <!-- 可选：结构化数据，有助于SEO（请根据实际信息修改） -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "瑞鳳堂株式会社",
-    "url": "https://example.com/",
-    "logo": "https://example.com/logo.png",
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+81-90-0000-0000",
-      "contactType": "customer service",
-      "areaServed": ["JP","CN"],
-      "availableLanguage": ["zh-CN","ja","en"]
-    },
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Kyoto",
-      "addressCountry": "JP"
-    }
-  }
-  </script>
+  <footer>
+    <div class="wrap" style="padding:16px 20px;color:#94a3b8">© ZUIHOUDOU K.K. 瑞鳳堂株式会社 — Kyoto & Kansai</div>
+  </footer>
 </body>
 </html>
+```
+
+---
+
+## 3) `zh/index.html`（中文：含导航、锚点、联系表单）
+```html
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>瑞鳳堂株式会社｜翻译｜不动产咨询｜日本直邮中国</title>
+<meta name="description" content="瑞鳳堂株式会社：翻译服务、不动产咨询、日本商品直邮中国。京都与关西地区。">
+<link rel="icon" href="/favicon.ico">
+<link rel="alternate" href="https://zuihoudou.com/ja/" hreflang="ja" />
+<link rel="alternate" href="https://zuihoudou.com/zh/" hreflang="zh" />
+<link rel="alternate" href="https://zuihoudou.com/" hreflang="x-default" />
+<style>
+  :root{--bg:#0b1020;--card:#121a33;--text:#e6edf3;--muted:#94a3b8;--line:#1e293b}
+  *{box-sizing:border-box} body{margin:0;background:#0b1020;color:var(--text);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial}
+  a{color:#cdd6f4;text-decoration:none} a:hover{text-decoration:underline}
+  header{position:sticky;top:0;background:#0b1028cc;backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line)}
+  .wrap{max-width:1100px;margin:auto;padding:14px 20px}
+  nav{display:flex;gap:14px;align-items:center}
+  nav a{padding:8px 10px;border:1px solid #334155;border-radius:8px}
+  main{padding:24px 20px}
+  h1{margin:6px 0 8px}
+  .muted{color:var(--muted)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin:12px 0}
+  .card{background:var(--card);border:1px solid #1f2a44;border-radius:14px;padding:18px}
+  label{display:block;margin-top:10px}
+  input,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #334155;background:#0b1028;color:var(--text)}
+  button{margin-top:10px;padding:10px 16px;border:1px solid #334155;border-radius:10px;background:#0b1028;color:var(--text)}
+  button:hover{border-color:#64748b}
+  footer{border-top:1px solid var(--line);margin-top:20px}
+</style>
+</head>
+<body>
+<header class="wrap" style="display:flex;justify-content:space-between;align-items:center">
+  <div>
+    <strong>瑞鳳堂株式会社 ZUIHOUDOU K.K.</strong>
+    <div class="muted">京都市左京区｜服务区域：京都＋关西</div>
+  </div>
+  <nav>
+    <a href="#services">服务</a>
+    <a href="#about">公司</a>
+    <a href="#contact">联系</a>
+    <a href="/ja/">日本語</a>
+  </nav>
+</header>
+
+<main class="wrap">
+  <section id="hero">
+    <h1>跨国综合服务 · 让沟通与落地更简单</h1>
+    <p class="muted">我们为在日华人、赴日投资者与企业提供：翻译／不动产咨询／日本商品直邮中国等一站式服务。</p>
+  </section>
+
+  <section id="services">
+    <h2>核心服务</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>① 翻译服务</h3>
+        <p>现场口译（银行／法务／不动产）与文书翻译。支持预约陪同、即时报价与加急服务。</p>
+      </div>
+      <div class="card">
+        <h3>② 不动产咨询</h3>
+        <p>京都与关西地区：租赁／买卖／投资评估／合同审阅／手续支援，面向留学生与投资者。</p>
+      </div>
+      <div class="card">
+        <h3>③ 日本商品直邮中国</h3>
+        <p>日本本土正品采购→国际物流→合规清关→到货跟踪，支持批量与小额试单。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>公司信息</h2>
+    <p>公司名称：瑞鳳堂株式会社（ZUIHOUDOU K.K.）<br>
+       所在地：京都市左京区（详细地址待确认）<br>
+       代表人：劉鳳霞<br>
+       业务范围：翻译、不动产咨询、跨境电商贸易</p>
+  </section>
+
+  <section id="contact">
+    <h2>联系我们</h2>
+    <p class="muted">邮箱：<a href="mailto:info@zuihoudou.com">info@zuihoudou.com</a></p>
+    <!-- 表单：使用 Formspree（请将 your_form_id 替换为你在 formspree.io 获取的 ID） -->
+    <form action="https://formspree.io/f/your_form_id" method="POST">
+      <label>姓名 <input required name="name" /></label>
+      <label>邮箱 <input required type="email" name="email" /></label>
+      <label>想咨询的服务 <input name="service" placeholder="翻译 / 不动产 / 直邮" /></label>
+      <label>详细需求 <textarea required name="message" rows="5"></textarea></label>
+      <button type="submit">发送</button>
+    </form>
+  </section>
+</main>
+
+<footer class="wrap muted">© ZUIHOUDOU K.K. 瑞鳳堂株式会社</footer>
+</body>
+</html>
+```
+
+---
+
+## 4) `ja/index.html`（日本語：含导航、锚点、联系表单）
+```html
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>瑞鳳堂株式会社｜通訳・翻訳｜不動産コンサル｜日本商品を中国へ直送</title>
+<meta name="description" content="瑞鳳堂株式会社：通訳・翻訳、不動産コンサルティング、日本商品を中国へ直送。京都・関西対応。">
+<link rel="icon" href="/favicon.ico">
+<link rel="alternate" href="https://zuihoudou.com/ja/" hreflang="ja" />
+<link rel="alternate" href="https://zuihoudou.com/zh/" hreflang="zh" />
+<link rel="alternate" href="https://zuihoudou.com/" hreflang="x-default" />
+<style>
+  :root{--bg:#0b1020;--card:#121a33;--text:#e6edf3;--muted:#94a3b8;--line:#1e293b}
+  *{box-sizing:border-box} body{margin:0;background:#0b1020;color:var(--text);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial}
+  a{color:#cdd6f4;text-decoration:none} a:hover{text-decoration:underline}
+  header{position:sticky;top:0;background:#0b1028cc;backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid var(--line)}
+  .wrap{max-width:1100px;margin:auto;padding:14px 20px}
+  nav{display:flex;gap:14px;align-items:center}
+  nav a{padding:8px 10px;border:1px solid #334155;border-radius:8px}
+  main{padding:24px 20px}
+  h1{margin:6px 0 8px}
+  .muted{color:var(--muted)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin:12px 0}
+  .card{background:var(--card);border:1px solid #1f2a44;border-radius:14px;padding:18px}
+  label{display:block;margin-top:10px}
+  input,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #334155;background:#0b1028;color:var(--text)}
+  button{margin-top:10px;padding:10px 16px;border:1px solid #334155;border-radius:10px;background:#0b1028;color:var(--text)}
+  button:hover{border-color:#64748b}
+  footer{border-top:1px solid var(--line);margin-top:20px}
+</style>
+</head>
+<body>
+<header class="wrap" style="display:flex;justify-content:space-between;align-items:center">
+  <div>
+    <strong>瑞鳳堂株式会社 ZUIHOUDOU K.K.</strong>
+    <div class="muted">京都市左京区｜対応エリア：京都＋関西</div>
+  </div>
+  <nav>
+    <a href="#services">サービス</a>
+    <a href="#about">会社情報</a>
+    <a href="#contact">お問い合わせ</a>
+    <a href="/zh/">中文</a>
+  </nav>
+</header>
+
+<main class="wrap">
+  <section id="hero">
+    <h1>言語とビジネスの壁をなくす、総合サポート</h1>
+    <p class="muted">在日外国人・投資家・企業向けに、通訳／不動産コンサル／日本商品の中国直送をワンストップで提供します。</p>
+  </section>
+
+  <section id="services">
+    <h2>サービス内容</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>① 通訳・翻訳</h3>
+        <p>銀行・法務・不動産など各種手続きの同行通訳／書類翻訳。事前予約・お急ぎ対応可。</p>
+      </div>
+      <div class="card">
+        <h3>② 不動産コンサルティング</h3>
+        <p>京都・関西エリアの賃貸／売買／投資支援。物件提案、契約サポート、外国人向け各種サポート。</p>
+      </div>
+      <div class="card">
+        <h3>③ 日本商品を中国へ直送</h3>
+        <p>国内正規仕入れ→国際配送→通関→到着まで一括手配。小ロットの試験出荷にも対応。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>会社概要</h2>
+    <p>会社名：瑞鳳堂株式会社（ZUIHOUDOU K.K.）<br>
+       所在地：京都市左京区（詳細住所は追って掲示）<br>
+       代表者：劉 鳳霞<br>
+       事業内容：通訳・翻訳／不動産コンサル／越境EC・貿易</p>
+  </section>
+
+  <section id="contact">
+    <h2>お問い合わせ</h2>
+    <p class="muted">メール：<a href="mailto:info@zuihoudou.com">info@zuihoudou.com</a></p>
+    <form action="https://formspree.io/f/your_form_id" method="POST">
+      <label>お名前 <input required name="name" /></label>
+      <label>メール <input required type="email" name="email" /></label>
+      <label>ご希望のサービス <input name="service" placeholder="通訳・不動産・直送 など" /></label>
+      <label>詳細 <textarea required name="message" rows="5"></textarea></label>
+      <button type="submit">送信</button>
+    </form>
+  </section>
+</main>
+
+<footer class="wrap muted">© ZUIHOUDOU K.K. 瑞鳳堂株式会社</footer>
+</body>
+</html>
+```
+
+---
+
+## 5) `sitemap.xml`（加入语言页）
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://zuihoudou.com/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://zuihoudou.com/zh/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://zuihoudou.com/ja/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>
+```
+
+---
+
+## 6) `robots.txt`
+```txt
+User-agent: *
+Allow: /
+Sitemap: https://zuihoudou.com/sitemap.xml
+```
+
+---
+
+## 7) `favicon.ico`
+> 放一个 32×32 的图标文件到仓库根目录。没有现成图标的话，可先用在线生成器生成一个带字母 **Z** 的极简图标；之后我们再换成你的品牌 Logo。
+
+---
+
+# 上传步骤（一次到位）
+1. 在 GitHub 打开仓库 `companysite` → **Add file → Upload files**。
+2. 先上传：`CNAME`、`index.html`、`sitemap.xml`、`robots.txt`、`favicon.ico`。
+3. 新建文件夹 `zh/` 与 `ja/`，分别把各自的 `index.html` 放进去。
+4. Commit 保存。
+5. 回到 **Settings → Pages**，确保 Custom domain = `zuihoudou.com`，勾选 **Enforce HTTPS**。
+6. 打开：
+   - https://zuihoudou.com/
+   - https://zuihoudou.com/zh/
+   - https://zuihoudou.com/ja/
+
+# 可选（表单接收邮件）
+- 前往 https://formspree.io/ 注册后，创建一个 form，得到 `form_id`；
+- 把 `your_form_id` 替换为真实 ID；
+- 表单提交就会转发到你指定的邮箱（推荐用你稍后开通的 `info@zuihoudou.com`）。
+
+---
+
+需要我帮你把这几份文件直接提交到你的 GitHub 仓库吗？如果你把 `your_form_id` 给我，我也可以一并替换好。
+
