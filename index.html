@@ -4,73 +4,148 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>瑞鳳堂株式会社｜ZUIHOUDOU Co., Ltd.</title>
-  <meta name="description" content="瑞鳳堂株式会社（ZUIHOUDOU）— 中日贸易、日本不动产投资顾问、翻译口译、古物销售、留学生生活支援。">
+  <meta name="description" content="瑞鳳堂株式会社（ZUIHOUDOU）— 中日贸易、日本不动产投资顾问、翻译口译、古物销售、留学生生活支援。" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23f472b6'/%3E%3C/svg%3E">
   <style>
     :root{
-      --bg:#fff9fb;
-      --card:#ffffff;
+      --bg:#ffe9f2;           /* 主背景粉 */
+      --bg-2:#ffd6e7;         /* 渐变粉 */
+      --card:#ffffffcc;       /* 半透明卡片 */
       --ink:#1f2937;
       --muted:#6b7280;
-      --brand:#e11d48;
-      --brand-2:#f472b6;
-      --line:#f3e5ec;
-      --shadow:0 10px 25px rgba(0,0,0,.06);
-      --radius:18px;
+      --brand:#e11d48;        /* 品牌玫红 */
+      --line:#ffc2da;
+      --shadow:0 14px 40px rgba(0,0,0,.12);
+      --radius:20px;
     }
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans SC","PingFang SC","Hiragino Sans",sans-serif;}
-    body{background:var(--bg)}
-    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.85);backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid var(--line)}
+    html,body{margin:0;padding:0;color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans SC","PingFang SC","Hiragino Sans GB",sans-serif;}
+    html{scroll-behavior:smooth}
+    body{
+      min-height:100vh;
+      background: radial-gradient(1200px 800px at 20% -10%, var(--bg-2), transparent 70%),
+                  radial-gradient(900px 600px at 90% 10%, #ffd9ec, transparent 60%),
+                  radial-gradient(1200px 800px at 50% 120%, #ffe0ef, transparent 60%),
+                  var(--bg);
+      overflow-x:hidden;
+    }
+
+    /* ====== 樱花背景（密集 + 飘落） ====== */
+    .sakura-wall{
+      position:fixed; inset:0; z-index:-2; pointer-events:none; opacity:.22;
+      background-image:
+        url('data:image/svg+xml;utf8,<?xml version="1.0" ?><svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"><g fill="%23f472b6"><path d="M60 12c4 10-5 19-5 19s-11-6-8-16 13-12 13-3z"/><path d="M98 32c-10 4-19-5-19-5s6-11 16-8 12 13 3 13z"/><path d="M84 96c-4-10 5-19 5-19s11 6 8 16-13 12-13 3z"/><path d="M26 106c10-4 19 5 19 5s-6 11-16 8-12-13-3-13z"/><circle cx="60" cy="60" r="16"/></g></svg>'),
+        url('data:image/svg+xml;utf8,<?xml version="1.0" ?><svg xmlns="http://www.w3.org/2000/svg" width="140" height="140" viewBox="0 0 120 120"><g fill="%23fb7185"><circle cx="20" cy="20" r="6"/><circle cx="90" cy="30" r="4"/><circle cx="40" cy="90" r="5"/><circle cx="100" cy="70" r="3"/></g></svg>');
+      background-size: 140px 140px, 200px 200px;
+      background-repeat: repeat;
+      filter: blur(.2px);
+    }
+    .petal{
+      position:fixed; top:-10vh; left:0; width:14px; height:14px; z-index:-1; pointer-events:none;
+      background: radial-gradient(circle at 40% 40%, #fff 25%, #ffc1d8 26% 60%, #f472b6 61%);
+      border-radius:60% 40% 60% 40%;
+      animation: fall linear, sway ease-in-out infinite;
+      opacity:.9;
+    }
+    @keyframes fall{
+      to{ transform: translateY(120vh) rotate(360deg); }
+    }
+    @keyframes sway{
+      0%,100%{ margin-left:0 }
+      50%{ margin-left:40px }
+    }
+
+    /* ====== 顶部导航 ====== */
+    header{
+      position:sticky;top:0;z-index:50;background:rgba(255,255,255,.7);
+      backdrop-filter:saturate(160%) blur(12px);border-bottom:1px solid var(--line)
+    }
     .nav{max-width:1100px;margin:0 auto;padding:12px 18px;display:flex;align-items:center;gap:20px}
-    .brand{display:flex;align-items:center;gap:10px;font-weight:800}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:900}
     .brand .logo{width:34px;height:34px}
     .brand .title{font-size:18px}
     nav ul{list-style:none;margin:0;padding:0;display:flex;gap:18px;flex-wrap:wrap}
-    nav a{color:var(--ink);text-decoration:none;font-weight:700}
+    nav a{color:var(--ink);text-decoration:none;font-weight:800}
     nav a:hover{color:var(--brand)}
     .lang{margin-left:auto;display:flex;gap:10px}
-    .lang a{font-size:14px;color:var(--muted);text-decoration:none;padding:6px 10px;border:1px solid var(--line);border-radius:999px}
+    .lang a{font-size:14px;color:var(--muted);text-decoration:none;padding:6px 10px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.7)}
     .lang a.active,.lang a:hover{border-color:var(--brand);color:var(--brand)}
-    .hero{position:relative;max-width:1100px;margin:28px auto 0;background:linear-gradient(180deg,#fff,#fff6f9);border-radius:var(--radius);box-shadow:var(--shadow);padding:40px 22px;overflow:hidden}
+
+    /* ====== 英雄区 ====== */
+    .hero{
+      max-width:1100px;margin:28px auto 0;padding:40px 22px;border-radius:var(--radius);
+      background:rgba(255,255,255,.55); box-shadow:var(--shadow); overflow:hidden; position:relative;
+      border:1px solid #ffd3e6;
+    }
     .hero-grid{display:grid;grid-template-columns:1.35fr 1fr;align-items:center;gap:24px}
     h1{font-size:34px;margin:0 0 12px}
     .subtitle{color:var(--muted);margin:0 0 18px}
     .cta{display:flex;gap:12px;flex-wrap:wrap}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:12px;font-weight:800;border:2px solid transparent;text-decoration:none;cursor:pointer}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:14px;font-weight:900;border:2px solid transparent;text-decoration:none;cursor:pointer}
     .btn-primary{background:var(--brand);color:#fff}
     .btn-primary:hover{filter:brightness(1.05)}
-    .btn-ghost{background:#fff;border-color:var(--line);color:var(--ink)}
+    .btn-ghost{background:#fff;border-color:#ffd3e6;color:var(--ink)}
     .btn-ghost:hover{border-color:var(--brand);color:var(--brand)}
-    .sakura{position:absolute;inset:-120px -80px auto auto;opacity:.18;pointer-events:none;height:260px;width:70%;
-      background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="240" height="240" viewBox="0 0 200 200"><g fill="%23f472b6"><path d="M92 20c5 15-6 28-6 28s-16-9-11-24 17-19 17-4z"/><path d="M146 50c-15 5-28-6-28-6s9-16 24-11 19 17 4 17z"/><path d="M126 140c-5-15 6-28 6-28s16 9 11 24-17 19-17 4z"/><path d="M64 162c15-5 28 6 28 6s-9 16-24 11-19-17-4-17z"/><circle cx="98" cy="96" r="30"/></g></svg>');
-      background-size:240px 240px;background-repeat:repeat;transform:rotate(10deg);}
+    .kpis{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px}
+    .kpi{background:#fff0f6;border:1px dashed #ffc2da;border-radius:12px;padding:8px 12px;font-size:14px}
+
+    /* ====== 卡片区 ====== */
     .section{max-width:1100px;margin:42px auto;padding:0 18px}
     .cards{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
-    .card{grid-column:span 12;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px}
-    @media(min-width:720px){.card.span6{grid-column:span 6}.card.span12{grid-column:span 12}}
+    .card{
+      grid-column:span 12;background:var(--card);border:1px solid #ffd3e6;border-radius:var(--radius);
+      box-shadow:var(--shadow);padding:20px
+    }
+    @media(min-width:720px){ .card.span6{grid-column:span 6} .card.span12{grid-column:span 12}}
     .card h3{margin:0 0 8px}
     .muted{color:var(--muted)}
-    .kpis{display:flex;gap:16px;flex-wrap:wrap;margin-top:10px}
-    .kpi{background:#fff3f7;border:1px dashed var(--line);border-radius:12px;padding:8px 12px;font-size:14px}
     .list{margin:10px 0 0;padding-left:18px}
     .list li{margin:6px 0}
+
+    /* ====== 公司/联系 ====== */
     .grid-2{display:grid;grid-template-columns:1fr;gap:18px}
     @media(min-width:860px){.grid-2{grid-template-columns:1fr 1fr}}
     .about table{width:100%;border-collapse:collapse}
-    .about td{padding:10px;border-bottom:1px solid var(--line);vertical-align:top}
+    .about td{padding:10px;border-bottom:1px solid #ffd3e6;vertical-align:top}
     .about td:first-child{color:var(--muted);width:160px}
     form{display:grid;gap:12px}
-    input,textarea,select{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:#fff;font:inherit}
+    input,textarea,select{
+      width:100%;padding:12px 14px;border:1px solid #ffd3e6;border-radius:12px;background:#fff;font:inherit
+    }
     textarea{min-height:120px;resize:vertical}
     .required:after{content:" *";color:var(--brand)}
     .help{font-size:12px;color:var(--muted)}
-    .hr{height:1px;background:var(--line);margin:26px 0}
+    .hr{height:1px;background:#ffd3e6;margin:26px 0}
     .footer{padding:28px 0 40px;text-align:center;color:var(--muted)}
-    html{scroll-behavior:smooth}
+
+    /* ====== 小屏优化 ====== */
+    @media(max-width:720px){
+      .hero-grid{grid-template-columns:1fr}
+    }
   </style>
 </head>
 <body>
+  <!-- 大量樱花背景 & 飘落花瓣 -->
+  <div class="sakura-wall"></div>
+  <script>
+    // 生成多片飘落花瓣
+    (function makePetals(){
+      const n = 40; // 花瓣数量（可调大）
+      for(let i=0;i<n;i++){
+        const p = document.createElement('div');
+        p.className = 'petal';
+        const size = 10 + Math.random()*10;
+        p.style.width = size+'px'; p.style.height = size+'px';
+        p.style.left = (Math.random()*100)+'vw';
+        const dur = 10 + Math.random()*12;
+        p.style.animationDuration = dur+'s, '+(4+Math.random()*4)+'s';
+        p.style.animationDelay = (Math.random()*-dur)+'s, 0s';
+        p.style.opacity = .6 + Math.random()*0.4;
+        document.body.appendChild(p);
+      }
+    })();
+  </script>
+
   <!-- 顶部导航 -->
   <header>
     <div class="nav">
@@ -97,12 +172,11 @@
     </div>
   </header>
 
-  <!-- 英雄区 -->
+  <!-- 英雄区：左文案 + 右“丸子风”卡通SVG -->
   <main id="home" class="hero">
-    <div class="sakura" aria-hidden="true"></div>
     <div class="hero-grid">
       <div>
-        <h1>连接日本与中国的专业商务平台</h1>
+        <h1>满屏樱花 × 可爱卡通｜连接日本与中国的专业商务平台</h1>
         <p class="subtitle">中日贸易・日本不动产投资顾问・翻译口译・古物销售・留学生生活支援</p>
         <div class="cta">
           <a href="#contact" class="btn btn-primary">立即咨询</a>
@@ -114,14 +188,53 @@
           <div class="kpi">🗣️ N1 商务口译</div>
         </div>
       </div>
-      <div>
-        <!-- 卡通箱子＋樱花插画 -->
-        <svg viewBox="0 0 420 300" width="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <defs><linearGradient id="p1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff1f5"/><stop offset="1" stop-color="#ffe4ec"/></linearGradient></defs>
-          <rect x="0" y="0" width="420" height="300" rx="16" fill="url(#p1)"/>
-          <g transform="translate(70,95)"><rect x="0" y="40" width="190" height="110" rx="10" fill="#f6d8a8" stroke="#d6a66f"/><path d="M0 40 L95 0 L190 40 Z" fill="#f1c484" stroke="#d6a66f"/><rect x="75" y="95" width="40" height="35" fill="#d6a66f" opacity=".35"/></g>
-          <g transform="translate(115,140)"><circle cx="40" cy="40" r="26" fill="#fff"/><circle cx="32" cy="38" r="4"/><circle cx="48" cy="38" r="4"/><path d="M30 48 Q40 56 50 48" stroke="#000" fill="none" stroke-linecap="round"/></g>
-          <g fill="#f472b6" opacity=".7"><circle cx="330" cy="70" r="10"/><circle cx="350" cy="90" r="7"/><circle cx="300" cy="110" r="6"/><circle cx="360" cy="140" r="8"/><circle cx="320" cy="170" r="6"/></g>
+      <div aria-hidden="true">
+        <!-- 自绘「樱桃小丸子风」卡通女孩（原创SVG，非官方形象） -->
+        <svg viewBox="0 0 360 320" width="100%" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="bgp" x1="0" y1="0" x2="1" y2="1">
+              <stop stop-color="#fff5fa"/><stop offset="1" stop-color="#ffe3ef"/>
+            </linearGradient>
+          </defs>
+          <rect x="0" y="0" width="360" height="320" rx="20" fill="url(#bgp)" stroke="#ffd3e6"/>
+          <!-- 气泡樱花 -->
+          <g fill="#f472b6" opacity=".35">
+            <circle cx="320" cy="40" r="8"/><circle cx="300" cy="70" r="6"/><circle cx="330" cy="100" r="5"/>
+          </g>
+          <!-- 女孩身体 -->
+          <g transform="translate(100,40)">
+            <!-- 头发 -->
+            <path d="M80 40c30 0 58 22 60 48l6 16c-6 10-18 10-28 6-8 20-32 24-38 24s-30-4-38-24c-10 4-22 4-28-6l6-16c2-26 30-48 60-48z" fill="#2b2b2b"/>
+            <!-- 脸 -->
+            <circle cx="80" cy="88" r="42" fill="#ffe8e1" stroke="#f5c7c7"/>
+            <!-- 刘海 -->
+            <path d="M40 84c12-10 24-16 40-16s28 6 40 16c-6-20-24-36-40-36s-34 16-40 36z" fill="#2b2b2b"/>
+            <!-- 眼睛 -->
+            <circle cx="64" cy="92" r="5" fill="#222"/>
+            <circle cx="96" cy="92" r="5" fill="#222"/>
+            <!-- 腮红 -->
+            <circle cx="56" cy="104" r="6" fill="#ffc2d0" opacity=".8"/>
+            <circle cx="104" cy="104" r="6" fill="#ffc2d0" opacity=".8"/>
+            <!-- 微笑 -->
+            <path d="M66 112q14 12 28 0" fill="none" stroke="#c84b62" stroke-width="3" stroke-linecap="round"/>
+            <!-- 衣服（红裙白衬衣） -->
+            <path d="M40 148h80l12 52H28z" fill="#ef476f"/>
+            <rect x="58" y="128" width="44" height="30" fill="#fff" stroke="#ffd3e6"/>
+            <path d="M58 128l-16 20h32zM102 128l16 20H86z" fill="#fff0f6" stroke="#ffd3e6"/>
+            <!-- 手臂 -->
+            <path d="M38 156c-12 8-18 16-18 24 0 12 14 18 22 10 5-5 4-12 2-18l6-10z" fill="#ffe8e1" />
+            <path d="M122 156c12 8 18 16 18 24 0 12-14 18-22 10-5-5-4-12-2-18l-6-10z" fill="#ffe8e1" />
+            <!-- 腿 -->
+            <rect x="62" y="200" width="12" height="24" rx="6" fill="#ffe8e1"/>
+            <rect x="86" y="200" width="12" height="24" rx="6" fill="#ffe8e1"/>
+            <!-- 鞋 -->
+            <rect x="56" y="222" width="24" height="10" rx="5" fill="#e11d48"/>
+            <rect x="82" y="222" width="24" height="10" rx="5" fill="#e11d48"/>
+          </g>
+          <!-- 周围花瓣 -->
+          <g fill="#f472b6" opacity=".6">
+            <circle cx="40" cy="260" r="6"/><circle cx="20" cy="230" r="4"/><circle cx="330" cy="260" r="7"/>
+          </g>
         </svg>
       </div>
     </div>
@@ -133,30 +246,30 @@
     <div class="cards">
       <article class="card span6">
         <h3>01｜中日贸易（日本直邮中国）</h3>
-        <p>我们根据您的清单在日本正规渠道采购，并通过国际物流<b>从日本直邮到您家</b>，让复购更加省时省心。</p>
+        <p>我们在日本正规渠道采购，并通过国际物流<b>从日本直邮到您家</b>，让复购省时省心。</p>
         <ul class="list">
-          <li>✅ 能提供购买凭证，来源透明</li>
+          <li>✅ 提供购买凭证，来源透明</li>
           <li>✅ <b>一件商品一个单号</b>，全程物流可追踪</li>
           <li>✅ 正品真货保证，拒绝水货</li>
         </ul>
-        <p class="muted">支持小批量、多品类；需报关/发票请在表单备注。</p>
+        <p class="muted">支持小批量、多品类；如需报关/发票请在下方联系表说明。</p>
       </article>
 
       <article class="card span6">
         <h3>02｜日本不动产投资顾问</h3>
-        <p>由<b>日本宅建士资格</b>的专业人员提供购房、投资回报测算、实地带看、文件审阅与风险提示，助您安心投资。</p>
+        <p>由<b>日本宅建士</b>为您提供购房、收益测算、实地带看、文件审阅与风险提示，助您安心投资。</p>
         <ul class="list">
-          <li>📍 地区/收益分析与现金流测算</li>
-          <li>📝 流程与法律文件说明</li>
+          <li>📍 地区／收益分析与现金流测算</li>
+          <li>📝 购房流程与法律文件说明</li>
           <li>🏢 公司设立与经营管理签证相关咨询</li>
         </ul>
       </article>
 
       <article class="card span6">
         <h3>03｜中日翻译与口译服务</h3>
-        <p>覆盖留学生生活手续与企业商务场景，人员具备日语 N1 与商务经验。</p>
+        <p>覆盖留学生生活手续、企业商务谈判与各类文书，人员具备日语 N1 与商务经验。</p>
         <ul class="list">
-          <li>🗂️ 生活陪同：银行开户、手机卡、印章登记、市役所手续</li>
+          <li>🗂️ 生活陪同：银行开户、手机卡、印章登记、政府手续</li>
           <li>🤝 商务口译：客户会面、合同签署、会议随行</li>
           <li>📄 文书翻译：合同/证明/申请材料</li>
         </ul>
@@ -183,7 +296,7 @@
     </div>
   </section>
 
-  <!-- 公司＋表单 -->
+  <!-- 公司 + 联系表单 -->
   <section class="section grid-2" id="about">
     <div class="card about">
       <h2>会社概要</h2>
@@ -227,8 +340,11 @@
         <label class="required">具体需求
           <textarea name="message" placeholder="请尽量详细描述您的需求…" required></textarea>
         </label>
+
+        <!-- Formspree -->
         <input type="hidden" name="_subject" value="网站咨询：来自 zuihoudou.com 的新消息">
         <input type="hidden" name="_redirect" value="https://zuihoudou.com/thanks.html">
+
         <button class="btn btn-primary" type="submit">提交咨询</button>
         <div class="help">提交即表示您同意我们仅为联系之目的使用您的信息。</div>
       </form>
@@ -248,7 +364,7 @@
       let ok = true;
       required.forEach(el=>{
         if(!el.value.trim()){ el.style.borderColor = '#e11d48'; ok=false; }
-        else { el.style.borderColor = 'var(--line'); }
+        else { el.style.borderColor = '#ffd3e6'; }
       });
       if(!ok){ e.preventDefault(); alert('请填写所有必填项（*）。'); }
     });
