@@ -34,8 +34,8 @@
     .sakura-wall{
       position:fixed; inset:0; z-index:-2; pointer-events:none; opacity:.22;
       background-image:
-        url('data:image/svg+xml;utf8,<?xml version="1.0" ?><svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"><g fill="%23f472b6"><path d="M60 12c4 10-5 19-5 19s-11-6-8-16 13-12 13-3z"/><path d="M98 32c-10 4-19-5-19-5s6-11 16-8 12 13 3 13z"/><path d="M84 96c-4-10 5-19 5-19s11 6 8 16-13 12-13 3z"/><path d="M26 106c10-4 19 5 19 5s-6 11-16 8-12-13-3-13z"/><circle cx="60" cy="60" r="16"/></g></svg>'),
-        url('data:image/svg+xml;utf8,<?xml version="1.0" ?><svg xmlns="http://www.w3.org/2000/svg" width="140" height="140" viewBox="0 0 120 120"><g fill="%23fb7185"><circle cx="20" cy="20" r="6"/><circle cx="90" cy="30" r="4"/><circle cx="40" cy="90" r="5"/><circle cx="100" cy="70" r="3"/></g></svg>');
+        url('data:image/svg+xml;utf8,<?xml version="1.0" ?><svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"><g fill="%23f472b6"><path d="M60 12c4 10-5 19-5 19s-11-6-8-16 13-12 13-3z"/><path d="M98 32c-10 4-19-5-19-5s6-11 16-8 12 13 3 13z"/><path d="M84 96c-4-10 5-19 5-19s11 6 8 16-13 12-13 3z"/><path d="M26 106c10-4 19 5 19 5s-6 11-16 8-12-13-3-13z"/><circle cx='60' cy='60' r='16'/></g></svg>'),
+        url('data:image/svg+xml;utf8,<?xml version="1.0" ?><svg xmlns="http://www.w3.org/2000/svg" width="140" height="140" viewBox="0 0 120 120"><g fill="%23fb7185"><circle cx='20' cy='20' r='6'/><circle cx='90' cy='30' r='4'/><circle cx='40' cy='90' r='5'/><circle cx='100' cy='70' r='3'/></g></svg>');
       background-size: 140px 140px, 200px 200px;
       background-repeat: repeat;
       filter: blur(.2px);
@@ -47,13 +47,8 @@
       animation: fall linear, sway ease-in-out infinite;
       opacity:.9;
     }
-    @keyframes fall{
-      to{ transform: translateY(120vh) rotate(360deg); }
-    }
-    @keyframes sway{
-      0%,100%{ margin-left:0 }
-      50%{ margin-left:40px }
-    }
+    @keyframes fall{ to{ transform: translateY(120vh) rotate(360deg); } }
+    @keyframes sway{ 0%,100%{ margin-left:0 } 50%{ margin-left:40px } }
 
     /* ====== 顶部导航 ====== */
     header{
@@ -118,19 +113,41 @@
     .hr{height:1px;background:#ffd3e6;margin:26px 0}
     .footer{padding:28px 0 40px;text-align:center;color:var(--muted)}
 
-    /* ====== 小屏优化 ====== */
-    @media(max-width:720px){
-      .hero-grid{grid-template-columns:1fr}
+    /* ====== 右侧微信二维码卡片 + 预览弹窗 ====== */
+    .qr-card{
+      background:#fff; border:1px solid #ffd3e6; border-radius:20px;
+      box-shadow:0 14px 40px rgba(0,0,0,.12);
+      padding:18px; display:flex; flex-direction:column; align-items:center;
     }
+    .qr-card img{
+      width:100%; max-width:360px; aspect-ratio:1 / 1; object-fit:contain;
+      border-radius:14px; border:1px solid #eee; cursor:zoom-in; background:#fff;
+    }
+    .qr-note{ margin:10px 0 0; font-size:13px; color:#6b7280; text-align:center; }
+    .qr-modal{
+      position:fixed; inset:0; display:none; align-items:center; justify-content:center;
+      background:rgba(0,0,0,.6); z-index:1000; padding:20px;
+    }
+    .qr-modal.open{ display:flex; }
+    .qr-modal img{
+      width:min(90vw,560px); height:auto; border-radius:12px; background:#fff;
+      box-shadow:0 20px 60px rgba(0,0,0,.35);
+    }
+    .qr-close{
+      position:absolute; top:16px; right:16px; background:#fff; border:none;
+      border-radius:999px; padding:8px 12px; font-weight:700; cursor:pointer;
+    }
+
+    /* ====== 小屏优化 ====== */
+    @media(max-width:720px){ .hero-grid{grid-template-columns:1fr} }
   </style>
 </head>
 <body>
   <!-- 大量樱花背景 & 飘落花瓣 -->
   <div class="sakura-wall"></div>
   <script>
-    // 生成多片飘落花瓣
-    (function makePetals(){
-      const n = 40; // 花瓣数量（可调大）
+    (function(){ // 生成多片飘落花瓣
+      const n = 40;
       for(let i=0;i<n;i++){
         const p = document.createElement('div');
         p.className = 'petal';
@@ -172,7 +189,7 @@
     </div>
   </header>
 
-  <!-- 英雄区：左文案 + 右“丸子风”卡通SVG -->
+  <!-- 英雄区：左文案 + 右侧微信二维码 -->
   <main id="home" class="hero">
     <div class="hero-grid">
       <div>
@@ -188,55 +205,18 @@
           <div class="kpi">🗣️ N1 商务口译</div>
         </div>
       </div>
-      <div aria-hidden="true">
-        <!-- 自绘「樱桃小丸子风」卡通女孩（<img src="images/maruko-official.png" alt="樱桃小丸子" style="width:100%;border-radius:20px;border:1px solid #ffd3e6;box-shadow:0 10px 30px rgba(0,0,0,.1);background:#fff5fa">
-，非官方形象） -->
-        <svg viewBox="0 0 360 320" width="100%" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="bgp" x1="0" y1="0" x2="1" y2="1">
-              <stop stop-color="#fff5fa"/><stop offset="1" stop-color="#ffe3ef"/>
-            </linearGradient>
-          </defs>
-          <rect x="0" y="0" width="360" height="320" rx="20" fill="url(#bgp)" stroke="#ffd3e6"/>
-          <!-- 气泡樱花 -->
-          <g fill="#f472b6" opacity=".35">
-            <circle cx="320" cy="40" r="8"/><circle cx="300" cy="70" r="6"/><circle cx="330" cy="100" r="5"/>
-          </g>
-          <!-- 女孩身体 -->
-          <g transform="translate(100,40)">
-            <!-- 头发 -->
-            <path d="M80 40c30 0 58 22 60 48l6 16c-6 10-18 10-28 6-8 20-32 24-38 24s-30-4-38-24c-10 4-22 4-28-6l6-16c2-26 30-48 60-48z" fill="#2b2b2b"/>
-            <!-- 脸 -->
-            <circle cx="80" cy="88" r="42" fill="#ffe8e1" stroke="#f5c7c7"/>
-            <!-- 刘海 -->
-            <path d="M40 84c12-10 24-16 40-16s28 6 40 16c-6-20-24-36-40-36s-34 16-40 36z" fill="#2b2b2b"/>
-            <!-- 眼睛 -->
-            <circle cx="64" cy="92" r="5" fill="#222"/>
-            <circle cx="96" cy="92" r="5" fill="#222"/>
-            <!-- 腮红 -->
-            <circle cx="56" cy="104" r="6" fill="#ffc2d0" opacity=".8"/>
-            <circle cx="104" cy="104" r="6" fill="#ffc2d0" opacity=".8"/>
-            <!-- 微笑 -->
-            <path d="M66 112q14 12 28 0" fill="none" stroke="#c84b62" stroke-width="3" stroke-linecap="round"/>
-            <!-- 衣服（红裙白衬衣） -->
-            <path d="M40 148h80l12 52H28z" fill="#ef476f"/>
-            <rect x="58" y="128" width="44" height="30" fill="#fff" stroke="#ffd3e6"/>
-            <path d="M58 128l-16 20h32zM102 128l16 20H86z" fill="#fff0f6" stroke="#ffd3e6"/>
-            <!-- 手臂 -->
-            <path d="M38 156c-12 8-18 16-18 24 0 12 14 18 22 10 5-5 4-12 2-18l6-10z" fill="#ffe8e1" />
-            <path d="M122 156c12 8 18 16 18 24 0 12-14 18-22 10-5-5-4-12-2-18l-6-10z" fill="#ffe8e1" />
-            <!-- 腿 -->
-            <rect x="62" y="200" width="12" height="24" rx="6" fill="#ffe8e1"/>
-            <rect x="86" y="200" width="12" height="24" rx="6" fill="#ffe8e1"/>
-            <!-- 鞋 -->
-            <rect x="56" y="222" width="24" height="10" rx="5" fill="#e11d48"/>
-            <rect x="82" y="222" width="24" height="10" rx="5" fill="#e11d48"/>
-          </g>
-          <!-- 周围花瓣 -->
-          <g fill="#f472b6" opacity=".6">
-            <circle cx="40" cy="260" r="6"/><circle cx="20" cy="230" r="4"/><circle cx="330" cy="260" r="7"/>
-          </g>
-        </svg>
+      <div>
+        <div class="qr-card">
+          <!-- 你刚上传在仓库根目录的二维码文件名：wechat.jpg -->
+          <img src="wechat.jpg" alt="微信二维码—乔紫衣" loading="lazy" id="qr-img">
+          <p class="qr-note">微信扫一扫添加好友｜乔紫衣（日本）</p>
+        </div>
+
+        <!-- 点击放大查看 -->
+        <div class="qr-modal" id="qr-modal" aria-hidden="true">
+          <button class="qr-close" id="qr-close" aria-label="关闭">关闭</button>
+          <img src="wechat.jpg" alt="微信二维码大图">
+        </div>
       </div>
     </div>
   </main>
@@ -342,7 +322,6 @@
           <textarea name="message" placeholder="请尽量详细描述您的需求…" required></textarea>
         </label>
 
-        <!-- Formspree -->
         <input type="hidden" name="_subject" value="网站咨询：来自 zuihoudou.com 的新消息">
         <input type="hidden" name="_redirect" value="https://zuihoudou.com/thanks.html">
 
@@ -359,6 +338,8 @@
 
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
+
+    // 表单必填校验
     const form = document.getElementById('contact-form');
     form.addEventListener('submit', function(e){
       const required = form.querySelectorAll('[required]');
@@ -369,6 +350,18 @@
       });
       if(!ok){ e.preventDefault(); alert('请填写所有必填项（*）。'); }
     });
+
+    // 点击二维码放大预览
+    (function(){
+      const img = document.getElementById('qr-img');
+      const modal = document.getElementById('qr-modal');
+      const closeBtn = document.getElementById('qr-close');
+      if(img && modal){
+        img.addEventListener('click', ()=> modal.classList.add('open'));
+        closeBtn.addEventListener('click', ()=> modal.classList.remove('open'));
+        modal.addEventListener('click', (e)=>{ if(e.target === modal) modal.classList.remove('open'); });
+      }
+    })();
   </script>
 </body>
 </html>
