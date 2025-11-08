@@ -8,54 +8,44 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23f472b6'/%3E%3C/svg%3E">
   <style>
     :root{
-      --bg:#ffe9f2;           /* 主背景粉 */
-      --bg-2:#ffd6e7;         /* 渐变粉 */
-      --card:#ffffffcc;       /* 半透明卡片 */
-      --ink:#1f2937;
-      --muted:#6b7280;
-      --brand:#e11d48;        /* 品牌玫红 */
-      --line:#ffc2da;
-      --shadow:0 14px 40px rgba(0,0,0,.12);
-      --radius:20px;
+      --bg:#ffe9f2; --bg-2:#ffd6e7; --card:#ffffffcc;
+      --ink:#1f2937; --muted:#6b7280; --brand:#e11d48; --line:#ffc2da;
+      --shadow:0 14px 40px rgba(0,0,0,.12); --radius:20px; --tap:48px;
     }
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans SC","PingFang SC","Hiragino Sans GB",sans-serif;}
+    html,body{margin:0;padding:0;color:var(--ink);
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans SC","PingFang SC","Hiragino Sans GB",sans-serif;}
     html{scroll-behavior:smooth}
     body{
-      min-height:100vh;
+      min-height:100vh; overflow-x:hidden;
       background: radial-gradient(1200px 800px at 20% -10%, var(--bg-2), transparent 70%),
                   radial-gradient(900px 600px at 90% 10%, #ffd9ec, transparent 60%),
                   radial-gradient(1200px 800px at 50% 120%, #ffe0ef, transparent 60%),
                   var(--bg);
-      overflow-x:hidden;
     }
-
-    /* ====== 樱花背景（密集 + 飘落） ====== */
+    /* 背景樱花 + 飘落 */
     .sakura-wall{
       position:fixed; inset:0; z-index:-2; pointer-events:none; opacity:.22;
       background-image:
-        url('data:image/svg+xml;utf8,<?xml version="1.0" ?><svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"><g fill="%23f472b6"><path d="M60 12c4 10-5 19-5 19s-11-6-8-16 13-12 13-3z"/><path d="M98 32c-10 4-19-5-19-5s6-11 16-8 12 13 3 13z"/><path d="M84 96c-4-10 5-19 5-19s11 6 8 16-13 12-13 3z"/><path d="M26 106c10-4 19 5 19 5s-6 11-16 8-12-13-3-13z"/><circle cx='60' cy='60' r='16'/></g></svg>'),
-        url('data:image/svg+xml;utf8,<?xml version="1.0" ?><svg xmlns="http://www.w3.org/2000/svg" width="140" height="140" viewBox="0 0 120 120"><g fill="%23fb7185"><circle cx='20' cy='20' r='6'/><circle cx='90' cy='30' r='4'/><circle cx='40' cy='90' r='5'/><circle cx='100' cy='70' r='3'/></g></svg>');
+        url('data:image/svg+xml;utf8,<?xml version="1.0" ?><svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"><g fill="%23f472b6"><path d="M60 12c4 10-5 19-5 19s-11-6-8-16 13-12 13-3z"/><path d="M98 32c-10 4-19-5-19-5s6-11 16-8 12 13 3 13z"/><path d="M84 96c-4-10 5-19 5-19s11 6 8 16-13 12-13 3z"/><path d="M26 106c10-4 19 5 19 5s-6 11-16 8-12-13-3-13z"/><circle cx="60" cy="60" r="16"/></g></svg>'),
+        url('data:image/svg+xml;utf8,<?xml version="1.0" ?><svg xmlns="http://www.w3.org/2000/svg" width="140" height="140" viewBox="0 0 120 120"><g fill="%23fb7185"><circle cx="20" cy="20" r="6"/><circle cx="90" cy="30" r="4"/><circle cx="40" cy="90" r="5"/><circle cx="100" cy="70" r="3"/></g></svg>');
       background-size: 140px 140px, 200px 200px;
-      background-repeat: repeat;
-      filter: blur(.2px);
     }
     .petal{
       position:fixed; top:-10vh; left:0; width:14px; height:14px; z-index:-1; pointer-events:none;
       background: radial-gradient(circle at 40% 40%, #fff 25%, #ffc1d8 26% 60%, #f472b6 61%);
       border-radius:60% 40% 60% 40%;
-      animation: fall linear, sway ease-in-out infinite;
-      opacity:.9;
+      animation: fall linear, sway ease-in-out infinite; opacity:.9;
     }
     @keyframes fall{ to{ transform: translateY(120vh) rotate(360deg); } }
     @keyframes sway{ 0%,100%{ margin-left:0 } 50%{ margin-left:40px } }
 
-    /* ====== 顶部导航 ====== */
+    /* 顶部导航 */
     header{
       position:sticky;top:0;z-index:50;background:rgba(255,255,255,.7);
       backdrop-filter:saturate(160%) blur(12px);border-bottom:1px solid var(--line)
     }
-    .nav{max-width:1100px;margin:0 auto;padding:12px 18px;display:flex;align-items:center;gap:20px}
+    .nav{max-width:1100px;margin:0 auto;padding:12px 18px;display:flex;align-items:center;gap:12px}
     .brand{display:flex;align-items:center;gap:10px;font-weight:900}
     .brand .logo{width:34px;height:34px}
     .brand .title{font-size:18px}
@@ -66,17 +56,30 @@
     .lang a{font-size:14px;color:var(--muted);text-decoration:none;padding:6px 10px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.7)}
     .lang a.active,.lang a:hover{border-color:var(--brand);color:var(--brand)}
 
-    /* ====== 英雄区 ====== */
+    /* 汉堡按钮（移动端） */
+    .hamburger{
+      display:none;background:#fff;border:1px solid var(--line);
+      border-radius:12px;padding:10px 12px;min-height:var(--tap);
+      font-weight:800;cursor:pointer;
+    }
+    @media (max-width: 768px){
+      .hamburger{ display:inline-flex; align-items:center; }
+      header nav ul{ display:none; position:absolute; top:56px; left:0; right:0;
+        background:#fff; border-bottom:1px solid var(--line); padding:12px 18px;
+        gap:14px; flex-direction:column; }
+      body.menu-open header nav ul{ display:flex; }
+    }
+
+    /* 英雄区 */
     .hero{
       max-width:1100px;margin:28px auto 0;padding:40px 22px;border-radius:var(--radius);
-      background:rgba(255,255,255,.55); box-shadow:var(--shadow); overflow:hidden; position:relative;
-      border:1px solid #ffd3e6;
+      background:rgba(255,255,255,.55); box-shadow:var(--shadow); border:1px solid #ffd3e6;
     }
     .hero-grid{display:grid;grid-template-columns:1.35fr 1fr;align-items:center;gap:24px}
     h1{font-size:34px;margin:0 0 12px}
     .subtitle{color:var(--muted);margin:0 0 18px}
     .cta{display:flex;gap:12px;flex-wrap:wrap}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:14px;font-weight:900;border:2px solid transparent;text-decoration:none;cursor:pointer}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:14px;font-weight:900;border:2px solid transparent;text-decoration:none;cursor:pointer;min-height:var(--tap);font-size:16px}
     .btn-primary{background:var(--brand);color:#fff}
     .btn-primary:hover{filter:brightness(1.05)}
     .btn-ghost{background:#fff;border-color:#ffd3e6;color:var(--ink)}
@@ -84,96 +87,76 @@
     .kpis{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px}
     .kpi{background:#fff0f6;border:1px dashed #ffc2da;border-radius:12px;padding:8px 12px;font-size:14px}
 
-    /* ====== 卡片区 ====== */
+    /* 卡片/版块 */
     .section{max-width:1100px;margin:42px auto;padding:0 18px}
     .cards{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
-    .card{
-      grid-column:span 12;background:var(--card);border:1px solid #ffd3e6;border-radius:var(--radius);
-      box-shadow:var(--shadow);padding:20px
-    }
+    .card{grid-column:span 12;background:var(--card);border:1px solid #ffd3e6;border-radius:var(--radius);box-shadow:var(--shadow);padding:20px}
     @media(min-width:720px){ .card.span6{grid-column:span 6} .card.span12{grid-column:span 12}}
-    .card h3{margin:0 0 8px}
     .muted{color:var(--muted)}
     .list{margin:10px 0 0;padding-left:18px}
     .list li{margin:6px 0}
 
-    /* ====== 公司/联系 ====== */
+    /* 公司/联系 */
     .grid-2{display:grid;grid-template-columns:1fr;gap:18px}
     @media(min-width:860px){.grid-2{grid-template-columns:1fr 1fr}}
     .about table{width:100%;border-collapse:collapse}
     .about td{padding:10px;border-bottom:1px solid #ffd3e6;vertical-align:top}
     .about td:first-child{color:var(--muted);width:160px}
     form{display:grid;gap:12px}
-    input,textarea,select{
-      width:100%;padding:12px 14px;border:1px solid #ffd3e6;border-radius:12px;background:#fff;font:inherit
-    }
+    input,textarea,select{width:100%;padding:12px 14px;border:1px solid #ffd3e6;border-radius:12px;background:#fff;font:inherit;min-height:var(--tap);font-size:16px}
     textarea{min-height:120px;resize:vertical}
     .required:after{content:" *";color:var(--brand)}
     .help{font-size:12px;color:var(--muted)}
     .hr{height:1px;background:#ffd3e6;margin:26px 0}
     .footer{padding:28px 0 40px;text-align:center;color:var(--muted)}
 
-    /* ====== 右侧微信二维码卡片 + 预览弹窗 ====== */
-    .qr-card{
-      background:#fff; border:1px solid #ffd3e6; border-radius:20px;
-      box-shadow:0 14px 40px rgba(0,0,0,.12);
-      padding:18px; display:flex; flex-direction:column; align-items:center;
-    }
-    .qr-card img{
-      width:100%; max-width:360px; aspect-ratio:1 / 1; object-fit:contain;
-      border-radius:14px; border:1px solid #eee; cursor:zoom-in; background:#fff;
-    }
-    .qr-note{ margin:10px 0 0; font-size:13px; color:#6b7280; text-align:center; }
-    .qr-modal{
-      position:fixed; inset:0; display:none; align-items:center; justify-content:center;
-      background:rgba(0,0,0,.6); z-index:1000; padding:20px;
-    }
-    .qr-modal.open{ display:flex; }
-    .qr-modal img{
-      width:min(90vw,560px); height:auto; border-radius:12px; background:#fff;
-      box-shadow:0 20px 60px rgba(0,0,0,.35);
-    }
-    .qr-close{
-      position:absolute; top:16px; right:16px; background:#fff; border:none;
-      border-radius:999px; padding:8px 12px; font-weight:700; cursor:pointer;
-    }
+    /* 二维码卡片 + 预览 */
+    .qr-card{background:#fff;border:1px solid #ffd3e6;border-radius:20px;box-shadow:0 14px 40px rgba(0,0,0,.12);padding:18px;display:flex;flex-direction:column;align-items:center}
+    .qr-card img{width:100%;max-width:360px;aspect-ratio:1/1;object-fit:contain;border-radius:14px;border:1px solid #eee;cursor:zoom-in;background:#fff}
+    .qr-note{margin:10px 0 0;font-size:13px;color:#6b7280;text-align:center}
+    .qr-modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.6);z-index:1000;padding:20px}
+    .qr-modal.open{display:flex}
+    .qr-modal img{width:min(90vw,560px);height:auto;border-radius:12px;background:#fff;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+    .qr-close{position:absolute;top:16px;right:16px;background:#fff;border:none;border-radius:999px;padding:8px 12px;font-weight:700;cursor:pointer}
 
-    /* ====== 小屏优化 ====== */
-    @media(max-width:720px){ .hero-grid{grid-template-columns:1fr} }
+    /* 手机自适应 */
+    @media (max-width: 768px){
+      .hero{padding:28px 16px}
+      .hero-grid{grid-template-columns:1fr;gap:16px}
+      .kpis{gap:8px}
+      .qr-card img{max-width:320px}
+    }
+    @media (max-width: 560px){
+      h1{font-size:24px;line-height:1.35}
+      .subtitle{font-size:14px}
+      .card{padding:16px;box-shadow:0 10px 26px rgba(0,0,0,.10)}
+      .section{margin:28px auto}
+      .qr-card{padding:14px}
+      .qr-card img{max-width:280px}
+      .lang a{padding:6px 8px}
+      .sakura-wall{opacity:.18}
+    }
+    @media (max-width: 390px){
+      .nav{padding:10px 12px}
+      .brand .title{font-size:16px}
+      .btn{padding:10px 14px}
+    }
   </style>
 </head>
 <body>
-  <!-- 大量樱花背景 & 飘落花瓣 -->
   <div class="sakura-wall"></div>
-  <script>
-    (function(){ // 生成多片飘落花瓣
-      const n = 40;
-      for(let i=0;i<n;i++){
-        const p = document.createElement('div');
-        p.className = 'petal';
-        const size = 10 + Math.random()*10;
-        p.style.width = size+'px'; p.style.height = size+'px';
-        p.style.left = (Math.random()*100)+'vw';
-        const dur = 10 + Math.random()*12;
-        p.style.animationDuration = dur+'s, '+(4+Math.random()*4)+'s';
-        p.style.animationDelay = (Math.random()*-dur)+'s, 0s';
-        p.style.opacity = .6 + Math.random()*0.4;
-        document.body.appendChild(p);
-      }
-    })();
-  </script>
 
   <!-- 顶部导航 -->
   <header>
     <div class="nav">
       <div class="brand">
-        <svg class="logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f472b6"/><stop offset="1" stop-color="#e11d48"/></linearGradient></defs>
-          <circle cx="24" cy="24" r="22" fill="url(#g)" opacity=".18"/>
-          <path d="M24 8c3 8-3 15-3 15s-9-5-6-13 9-9 9-2zM38 16c-8 3-15-3-15-3s5-9 13-6 9 9 2 9zM31 36c-3-8 3-15 3-15s9 5 6 13-9 9-9 2zM14 40c8-3 15 3 15 3s-5 9-13 6-9-9-2-9z" fill="#f472b6"/>
-          <circle cx="24" cy="24" r="7" fill="#e11d48"/></svg>
+        <svg class="logo" viewBox="0 0 48 48" aria-hidden="true">
+          <circle cx="24" cy="24" r="22" fill="#f472b6" opacity=".18"/>
+          <circle cx="24" cy="24" r="7" fill="#e11d48"/>
+        </svg>
         <div class="title">瑞鳳堂株式会社｜ZUIHOUDOU</div>
       </div>
+      <button class="hamburger" id="menu-toggle" aria-label="展开菜单">☰ 菜单</button>
       <nav>
         <ul>
           <li><a href="#home">首页</a></li>
@@ -189,11 +172,11 @@
     </div>
   </header>
 
-  <!-- 英雄区：左文案 + 右侧微信二维码 -->
+  <!-- 英雄区 -->
   <main id="home" class="hero">
     <div class="hero-grid">
       <div>
-        <h1>瑞鳳堂株式会社｜连接日本与中国的专业商务平台</h1>
+        <h1>满屏樱花 × 微信扫码｜连接日本与中国的专业商务平台</h1>
         <p class="subtitle">中日贸易・日本不动产投资顾问・翻译口译・古物销售・留学生生活支援</p>
         <div class="cta">
           <a href="#contact" class="btn btn-primary">立即咨询</a>
@@ -207,12 +190,9 @@
       </div>
       <div>
         <div class="qr-card">
-          <!-- 你刚上传在仓库根目录的二维码文件名：wechat.jpg -->
-          <img src="wechat.jpg" alt="微信二维码—瑞鳳堂株式会社" loading="lazy" id="qr-img">
-          <p class="qr-note">微信扫一扫添加好友｜瑞鳳堂株式会社（日本）</p>
+          <img src="wechat.jpg" alt="微信二维码—乔紫衣" loading="lazy" id="qr-img">
+          <p class="qr-note">微信扫一扫添加好友｜乔紫衣（日本）</p>
         </div>
-
-        <!-- 点击放大查看 -->
         <div class="qr-modal" id="qr-modal" aria-hidden="true">
           <button class="qr-close" id="qr-close" aria-label="关闭">关闭</button>
           <img src="wechat.jpg" alt="微信二维码大图">
@@ -277,7 +257,7 @@
     </div>
   </section>
 
-  <!-- 公司 + 联系表单 -->
+  <!-- 公司 + 联系 -->
   <section class="section grid-2" id="about">
     <div class="card about">
       <h2>会社概要</h2>
@@ -321,10 +301,8 @@
         <label class="required">具体需求
           <textarea name="message" placeholder="请尽量详细描述您的需求…" required></textarea>
         </label>
-
         <input type="hidden" name="_subject" value="网站咨询：来自 zuihoudou.com 的新消息">
         <input type="hidden" name="_redirect" value="https://zuihoudou.com/thanks.html">
-
         <button class="btn btn-primary" type="submit">提交咨询</button>
         <div class="help">提交即表示您同意我们仅为联系之目的使用您的信息。</div>
       </form>
@@ -337,31 +315,58 @@
   </footer>
 
   <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
+    // 花瓣数量：手机减少以提升流畅度
+    (function(){
+      const isSmall = window.matchMedia('(max-width: 560px)').matches;
+      const n = isSmall ? 16 : 40;
+      for(let i=0;i<n;i++){
+        const p = document.createElement('div');
+        p.className = 'petal';
+        const size = 10 + Math.random()*10;
+        p.style.width = size+'px'; p.style.height = size+'px';
+        p.style.left = (Math.random()*100)+'vw';
+        const dur = 10 + Math.random()*12;
+        p.style.animationDuration = dur+'s, '+(4+Math.random()*4)+'s';
+        p.style.animationDelay = (Math.random()*-dur)+'s, 0s';
+        p.style.opacity = .6 + Math.random()*0.4;
+        document.body.appendChild(p);
+      }
+    })();
 
-    // 表单必填校验
-    const form = document.getElementById('contact-form');
-    form.addEventListener('submit', function(e){
-      const required = form.querySelectorAll('[required]');
-      let ok = true;
-      required.forEach(el=>{
-        if(!el.value.trim()){ el.style.borderColor = '#e11d48'; ok=false; }
-        else { el.style.borderColor = '#ffd3e6'; }
-      });
-      if(!ok){ e.preventDefault(); alert('请填写所有必填项（*）。'); }
-    });
+    // 移动端菜单开关
+    (function(){
+      const btn = document.getElementById('menu-toggle');
+      if(btn){ btn.addEventListener('click', ()=> document.body.classList.toggle('menu-open')); }
+    })();
 
-    // 点击二维码放大预览
+    // 二维码放大预览
     (function(){
       const img = document.getElementById('qr-img');
       const modal = document.getElementById('qr-modal');
       const closeBtn = document.getElementById('qr-close');
       if(img && modal){
         img.addEventListener('click', ()=> modal.classList.add('open'));
-        closeBtn.addEventListener('click', ()=> modal.classList.remove('open'));
-        modal.addEventListener('click', (e)=>{ if(e.target === modal) modal.classList.remove('open'); });
+        if(closeBtn) closeBtn.addEventListener('click', ()=> modal.classList.remove('open'));
+        modal.addEventListener('click', e=>{ if(e.target===modal) modal.classList.remove('open'); });
       }
     })();
+
+    // 表单必填校验
+    (function(){
+      const form = document.getElementById('contact-form');
+      if(!form) return;
+      form.addEventListener('submit', function(e){
+        const required = form.querySelectorAll('[required]');
+        let ok = true;
+        required.forEach(el=>{
+          if(!el.value.trim()){ el.style.borderColor = '#e11d48'; ok=false; }
+          else { el.style.borderColor = '#ffd3e6'; }
+        });
+        if(!ok){ e.preventDefault(); alert('请填写所有必填项（*）。'); }
+      });
+    })();
+
+    document.getElementById('y').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
