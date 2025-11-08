@@ -4,21 +4,18 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>瑞鳳堂株式会社｜ZUIHOUDOU Co., Ltd.</title>
-  <meta name="description" content="瑞鳳堂株式会社（ZUIHOUDOU）— 日中貿易、日本不動産投資コンサルティング、翻訳・通訳、古物販売、留学生生活支援サービス。">
+  <meta name="description" content="瑞鳳堂株式会社（ZUIHOUDOU）— 日中貿易、不動産投資コンサル、翻訳・通訳、古物販売、留学生生活支援。">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23f472b6'/%3E%3C/svg%3E">
   <style>
     :root{
-      --bg:#ffe9f2; --bg-2:#ffd6e7;
-      --card:#ffffffcc; --ink:#1f2937; --muted:#6b7280;
-      --brand:#e11d48; --line:#ffc2da;
-      --shadow:0 14px 40px rgba(0,0,0,.12);
-      --radius:20px;
+      --bg:#ffe9f2; --bg-2:#ffd6e7; --card:#ffffffcc;
+      --ink:#1f2937; --muted:#6b7280; --brand:#e11d48; --line:#ffc2da;
+      --shadow:0 14px 40px rgba(0,0,0,.12); --radius:20px; --tap:48px;
     }
     *{box-sizing:border-box}
     html,body{margin:0;padding:0;color:var(--ink);
       font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,"Noto Sans JP","Hiragino Kaku Gothic ProN","Meiryo",sans-serif;}
     html{scroll-behavior:smooth}
-
     body{
       min-height:100vh; overflow-x:hidden;
       background: radial-gradient(1200px 800px at 20% -10%, var(--bg-2), transparent 70%),
@@ -26,30 +23,20 @@
                   radial-gradient(1200px 800px at 50% 120%, #ffe0ef, transparent 60%),
                   var(--bg);
     }
-
-    /* 樱花背景 */
-    .sakura-wall{
-      position:fixed; inset:0; z-index:-2; pointer-events:none; opacity:.22;
+    .sakura-wall{position:fixed; inset:0; z-index:-2; pointer-events:none; opacity:.22;
       background-image:
-        url('data:image/svg+xml;utf8,<?xml version="1.0" ?><svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"><g fill="%23f472b6"><path d="M60 12c4 10-5 19-5 19s-11-6-8-16 13-12 13-3z"/><path d="M98 32c-10 4-19-5-19-5s6-11 16-8 12 13 3 13z"/><path d="M84 96c-4-10 5-19 5-19s11 6 8 16-13 12-13 3z"/><path d="M26 106c10-4 19 5 19 5s-6 11-16 8-12-13-3-13z"/><circle cx='60' cy='60' r='16'/></g></svg>'),
-        url('data:image/svg+xml;utf8,<?xml version="1.0" ?><svg xmlns="http://www.w3.org/2000/svg" width="140" height="140" viewBox="0 0 120 120"><g fill="%23fb7185"><circle cx='20' cy='20' r='6'/><circle cx='90' cy='30' r='4'/><circle cx='40' cy='90' r='5'/><circle cx='100' cy='70' r='3'/></g></svg>');
+        url('data:image/svg+xml;utf8,<?xml version="1.0" ?><svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"><g fill="%23f472b6"><path d="M60 12c4 10-5 19-5 19s-11-6-8-16 13-12 13-3z"/><path d="M98 32c-10 4-19-5-19-5s6-11 16-8 12 13 3 13z"/><path d="M84 96c-4-10 5-19 5-19s11 6 8 16-13 12-13 3z"/><path d="M26 106c10-4 19 5 19 5s-6 11-16 8-12-13-3-13z"/><circle cx="60" cy="60" r="16"/></g></svg>'),
+        url('data:image/svg+xml;utf8,<?xml version="1.0" ?><svg xmlns="http://www.w3.org/2000/svg" width="140" height="140" viewBox="0 0 120 120"><g fill="%23fb7185"><circle cx="20" cy="20" r="6"/><circle cx="90" cy="30" r="4"/><circle cx="40" cy="90" r="5"/><circle cx="100" cy="70" r="3"/></g></svg>');
       background-size: 140px 140px, 200px 200px;
     }
-    .petal{
-      position:fixed; top:-10vh; left:0; width:14px; height:14px; z-index:-1; pointer-events:none;
+    .petal{position:fixed; top:-10vh; left:0; width:14px; height:14px; z-index:-1; pointer-events:none;
       background: radial-gradient(circle at 40% 40%, #fff 25%, #ffc1d8 26% 60%, #f472b6 61%);
-      border-radius:60% 40% 60% 40%;
-      animation: fall linear, sway ease-in-out infinite;
-      opacity:.9;
-    }
+      border-radius:60% 40% 60% 40%; animation: fall linear, sway ease-in-out infinite; opacity:.9}
     @keyframes fall{ to{ transform: translateY(120vh) rotate(360deg); } }
     @keyframes sway{ 0%,100%{ margin-left:0 } 50%{ margin-left:40px } }
 
-    header{
-      position:sticky;top:0;z-index:50;background:rgba(255,255,255,.7);
-      backdrop-filter:saturate(160%) blur(12px);border-bottom:1px solid var(--line)
-    }
-    .nav{max-width:1100px;margin:0 auto;padding:12px 18px;display:flex;align-items:center;gap:20px}
+    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.7);backdrop-filter:saturate(160%) blur(12px);border-bottom:1px solid var(--line)}
+    .nav{max-width:1100px;margin:0 auto;padding:12px 18px;display:flex;align-items:center;gap:12px}
     .brand{display:flex;align-items:center;gap:10px;font-weight:900}
     .brand .logo{width:34px;height:34px}
     .brand .title{font-size:18px}
@@ -60,84 +47,66 @@
     .lang a{font-size:14px;color:var(--muted);text-decoration:none;padding:6px 10px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.7)}
     .lang a.active,.lang a:hover{border-color:var(--brand);color:var(--brand)}
 
-    .hero{
-      max-width:1100px;margin:28px auto 0;padding:40px 22px;border-radius:var(--radius);
-      background:rgba(255,255,255,.55); box-shadow:var(--shadow); border:1px solid #ffd3e6;
+    .hamburger{display:none;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px;min-height:var(--tap);font-weight:800;cursor:pointer}
+    @media (max-width: 768px){
+      .hamburger{display:inline-flex;align-items:center}
+      header nav ul{display:none;position:absolute;top:56px;left:0;right:0;background:#fff;border-bottom:1px solid var(--line);padding:12px 18px;gap:14px;flex-direction:column}
+      body.menu-open header nav ul{display:flex}
     }
+
+    .hero{max-width:1100px;margin:28px auto 0;padding:40px 22px;border-radius:20px;background:rgba(255,255,255,.55);box-shadow:0 14px 40px rgba(0,0,0,.12);border:1px solid #ffd3e6}
     .hero-grid{display:grid;grid-template-columns:1.35fr 1fr;align-items:center;gap:24px}
     h1{font-size:34px;margin:0 0 12px}
-    .subtitle{color:var(--muted);margin:0 0 18px}
+    .subtitle{color:#6b7280;margin:0 0 18px}
     .cta{display:flex;gap:12px;flex-wrap:wrap}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:14px;font-weight:900;border:2px solid transparent;text-decoration:none;cursor:pointer}
-    .btn-primary{background:var(--brand);color:#fff}
-    .btn-ghost{background:#fff;border-color:#ffd3e6;color:var(--ink)}
-    .btn-ghost:hover{border-color:var(--brand);color:var(--brand)}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:14px;font-weight:900;border:2px solid transparent;text-decoration:none;cursor:pointer;min-height:var(--tap);font-size:16px}
+    .btn-primary{background:#e11d48;color:#fff}
+    .btn-ghost{background:#fff;border-color:#ffd3e6;color:#1f2937}
+    .btn-ghost:hover{border-color:#e11d48;color:#e11d48}
 
-    /* QR */
-    .qr-card{
-      background:#fff; border:1px solid #ffd3e6; border-radius:20px;
-      box-shadow:0 14px 40px rgba(0,0,0,.12);
-      padding:18px; display:flex; flex-direction:column; align-items:center;
-    }
-    .qr-card img{
-      width:100%; max-width:360px; border-radius:14px; border:1px solid #eee;
-      cursor:zoom-in; background:#fff;
-    }
-    .qr-note{ margin:10px 0 0; font-size:13px; color:#6b7280; text-align:center; }
-    .qr-modal{
-      position:fixed; inset:0; display:none; align-items:center; justify-content:center;
-      background:rgba(0,0,0,.6); z-index:1000; padding:20px;
-    }
-    .qr-modal.open{ display:flex; }
-    .qr-modal img{
-      width:min(90vw,560px); height:auto; border-radius:12px; background:#fff;
-      box-shadow:0 20px 60px rgba(0,0,0,.35);
-    }
-    .qr-close{
-      position:absolute; top:16px; right:16px; background:#fff; border:none;
-      border-radius:999px; padding:8px 12px; font-weight:700; cursor:pointer;
-    }
+    .qr-card{background:#fff;border:1px solid #ffd3e6;border-radius:20px;box-shadow:0 14px 40px rgba(0,0,0,.12);padding:18px;display:flex;flex-direction:column;align-items:center}
+    .qr-card img{width:100%;max-width:360px;border-radius:14px;border:1px solid #eee;cursor:zoom-in;background:#fff}
+    .qr-note{margin:10px 0 0;font-size:13px;color:#6b7280;text-align:center}
+    .qr-modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.6);z-index:1000;padding:20px}
+    .qr-modal.open{display:flex}
+    .qr-modal img{width:min(90vw,560px);height:auto;border-radius:12px;background:#fff;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+    .qr-close{position:absolute;top:16px;right:16px;background:#fff;border:none;border-radius:999px;padding:8px 12px;font-weight:700;cursor:pointer}
 
     .section{max-width:1100px;margin:42px auto;padding:0 18px}
     .cards{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
-    .card{
-      grid-column:span 12;background:var(--card);border:1px solid #ffd3e6;
-      border-radius:var(--radius);box-shadow:var(--shadow);padding:20px
-    }
+    .card{grid-column:span 12;background:#ffffffcc;border:1px solid #ffd3e6;border-radius:20px;box-shadow:0 14px 40px rgba(0,0,0,.12);padding:20px}
     @media(min-width:720px){ .card.span6{grid-column:span 6} .card.span12{grid-column:span 12}}
-
     .grid-2{display:grid;grid-template-columns:1fr;gap:18px}
     @media(min-width:860px){.grid-2{grid-template-columns:1fr 1fr}}
-
     form{display:grid;gap:12px}
-    input,textarea,select{
-      width:100%;padding:12px 14px;border:1px solid #ffd3e6;border-radius:12px;background:#fff;font:inherit
-    }
+    input,textarea,select{width:100%;padding:12px 14px;border:1px solid #ffd3e6;border-radius:12px;background:#fff;font:inherit;min-height:var(--tap);font-size:16px}
     textarea{min-height:120px;resize:vertical}
-    .footer{padding:28px 0 40px;text-align:center;color:var(--muted)}
-    @media(max-width:720px){ .hero-grid{grid-template-columns:1fr} }
+    .footer{padding:28px 0 40px;text-align:center;color:#6b7280}
 
+    @media (max-width: 768px){
+      .hero{padding:28px 16px}
+      .hero-grid{grid-template-columns:1fr;gap:16px}
+      .qr-card img{max-width:320px}
+    }
+    @media (max-width: 560px){
+      h1{font-size:24px;line-height:1.35}
+      .subtitle{font-size:14px}
+      .card{padding:16px;box-shadow:0 10px 26px rgba(0,0,0,.10)}
+      .section{margin:28px auto}
+      .qr-card{padding:14px}
+      .qr-card img{max-width:280px}
+      .lang a{padding:6px 8px}
+      .sakura-wall{opacity:.18}
+    }
+    @media (max-width: 390px){
+      .nav{padding:10px 12px}
+      .brand .title{font-size:16px}
+      .btn{padding:10px 14px}
+    }
   </style>
 </head>
 <body>
 <div class="sakura-wall"></div>
-<script>
-(function(){
-  const n=40;
-  for(let i=0;i<n;i++){
-    const p=document.createElement('div');
-    p.className='petal';
-    const s=10+Math.random()*10;
-    p.style.width=s+'px';p.style.height=s+'px';
-    p.style.left=(Math.random()*100)+'vw';
-    const dur=10+Math.random()*12;
-    p.style.animationDuration=dur+'s,'+(4+Math.random()*4)+'s';
-    p.style.animationDelay=(Math.random()*-dur)+'s,0s';
-    p.style.opacity=.6+Math.random()*0.4;
-    document.body.appendChild(p);
-  }
-})();
-</script>
 
 <header>
   <div class="nav">
@@ -145,6 +114,7 @@
       <svg class="logo" viewBox="0 0 48 48"><circle cx="24" cy="24" r="22" fill="#f472b6" opacity=".18"/><circle cx="24" cy="24" r="7" fill="#e11d48"/></svg>
       <div class="title">瑞鳳堂株式会社｜ZUIHOUDOU</div>
     </div>
+    <button class="hamburger" id="menu-toggle" aria-label="メニューを開く">☰ メニュー</button>
     <nav>
       <ul>
         <li><a href="#home">トップ</a></li>
@@ -160,7 +130,6 @@
   </div>
 </header>
 
-<!-- 英雄区 -->
 <main id="home" class="hero">
   <div class="hero-grid">
     <div>
@@ -172,7 +141,6 @@
       </div>
     </div>
 
-    <!-- QR 替换这里 -->
     <div>
       <div class="qr-card">
         <img src="wechat.jpg" alt="WeChat QR Code" id="qr-img">
@@ -186,7 +154,6 @@
   </div>
 </main>
 
-<!-- 服务内容 -->
 <section id="services" class="section">
   <h2>サービス内容</h2>
   <div class="cards">
@@ -235,12 +202,11 @@
     </table>
   </div>
 
-  <!-- 联系 -->
   <div class="card" id="contact">
     <h2>お問い合わせ</h2>
     <p>フォーム送信後、<b>24時間以内</b>にご連絡いたします。</p>
 
-    <form action="https://formspree.io/f/xanlrlwn" method="POST">
+    <form action="https://formspree.io/f/xanlrlwn" method="POST" id="contact-form">
       <input type="text" name="bot-field" style="display:none">
 
       <label>お名前
@@ -282,18 +248,58 @@
 </footer>
 
 <script>
-document.getElementById('y').textContent = new Date().getFullYear();
+  // 花瓣数量：小屏减少
+  (function(){
+    const isSmall = window.matchMedia('(max-width: 560px)').matches;
+    const n = isSmall ? 16 : 40;
+    for(let i=0;i<n;i++){
+      const p = document.createElement('div');
+      p.className = 'petal';
+      const size = 10 + Math.random()*10;
+      p.style.width = size+'px'; p.style.height = size+'px';
+      p.style.left = (Math.random()*100)+'vw';
+      const dur = 10 + Math.random()*12;
+      p.style.animationDuration = dur+'s, '+(4+Math.random()*4)+'s';
+      p.style.animationDelay = (Math.random()*-dur)+'s, 0s';
+      p.style.opacity = .6 + Math.random()*0.4;
+      document.body.appendChild(p);
+    }
+  })();
 
-// QR modal
-(function(){
-  const img=document.getElementById('qr-img');
-  const modal=document.getElementById('qr-modal');
-  const close=document.getElementById('qr-close');
-  img.addEventListener('click',()=>modal.classList.add('open'));
-  close.addEventListener('click',()=>modal.classList.remove('open'));
-  modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('open');});
-})();
+  // 菜单开关
+  (function(){
+    const btn = document.getElementById('menu-toggle');
+    if(btn){ btn.addEventListener('click', ()=> document.body.classList.toggle('menu-open')); }
+  })();
+
+  // 二维码预览
+  (function(){
+    const img = document.getElementById('qr-img');
+    const modal = document.getElementById('qr-modal');
+    const close = document.getElementById('qr-close');
+    if(img && modal){
+      img.addEventListener('click', ()=> modal.classList.add('open'));
+      if(close) close.addEventListener('click', ()=> modal.classList.remove('open'));
+      modal.addEventListener('click', e=>{ if(e.target===modal) modal.classList.remove('open'); });
+    }
+  })();
+
+  // 表单必填
+  (function(){
+    const form = document.getElementById('contact-form');
+    if(!form) return;
+    form.addEventListener('submit', function(e){
+      const req = form.querySelectorAll('[required]');
+      let ok = true;
+      req.forEach(el=>{
+        if(!el.value.trim()){ el.style.borderColor = '#e11d48'; ok=false; }
+        else { el.style.borderColor = '#ffd3e6'; }
+      });
+      if(!ok){ e.preventDefault(); alert('必須項目を入力してください。'); }
+    });
+  })();
+
+  document.getElementById('y').textContent = new Date().getFullYear();
 </script>
-
 </body>
 </html>
