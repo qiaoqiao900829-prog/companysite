@@ -176,7 +176,7 @@
     <div>
       <div class="qr-card">
         <img src="wechat.jpg" alt="WeChat QR Code" id="qr-img">
-        <p class="qr-note">微信で友だち追加（乔紫衣｜日本）</p>
+        <p class="qr-note">微信で友だち追加（瑞鳳堂株式会社｜日本）</p>
       </div>
       <div class="qr-modal" id="qr-modal" aria-hidden="true">
         <button class="qr-close" id="qr-close">閉じる</button>
@@ -272,4 +272,28 @@
 
       <input type="hidden" name="_redirect" value="https://zuihoudou.com/thanks-ja.html">
 
-      <button class="btn btn-primary" type="submit">送信</but
+      <button class="btn btn-primary" type="submit">送信</button>
+    </form>
+  </div>
+</section>
+
+<footer class="section footer">
+  © <span id="y"></span> 瑞鳳堂株式会社 ZUIHOUDOU Co., Ltd. All rights reserved.
+</footer>
+
+<script>
+document.getElementById('y').textContent = new Date().getFullYear();
+
+// QR modal
+(function(){
+  const img=document.getElementById('qr-img');
+  const modal=document.getElementById('qr-modal');
+  const close=document.getElementById('qr-close');
+  img.addEventListener('click',()=>modal.classList.add('open'));
+  close.addEventListener('click',()=>modal.classList.remove('open'));
+  modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('open');});
+})();
+</script>
+
+</body>
+</html>
