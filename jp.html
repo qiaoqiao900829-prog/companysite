@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>瑞鳳堂株式会社｜ZUIHOUDOU Co., Ltd.</title>
+  <meta name="description" content="瑞鳳堂株式会社（ZUIHOUDOU）— 日中貿易、日本不動産投資アドバイザリー、翻訳・通訳、古物販売、留学生生活支援。">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23f472b6'/%3E%3C/svg%3E">
+  <style>
+    :root{
+      --bg:#fff0f5;      /* 粉色背景 */
+      --card:#ffffff;
+      --ink:#1f2937;
+      --muted:#6b7280;
+      --brand:#e11d48;
+      --line:#f8cfe0;
+      --shadow:0 10px 25px rgba(0,0,0,.06);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans JP","Hiragino Kaku Gothic ProN","Meiryo",sans-serif;}
+    body{background:var(--bg)}
+    header{position:sticky;top:0;z-index:50;background:rgba(255,240,245,.85);backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid var(--line)}
+    .nav{max-width:1100px;margin:0 auto;padding:12px 18px;display:flex;align-items:center;gap:20px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800}
+    .brand .logo{width:34px;height:34px}
+    .brand .title{font-size:18px}
+    nav ul{list-style:none;margin:0;padding:0;display:flex;gap:18px;flex-wrap:wrap}
+    nav a{color:var(--ink);text-decoration:none;font-weight:700}
+    nav a:hover{color:var(--brand)}
+    .lang{margin-left:auto;display:flex;gap:10px}
+    .lang a{font-size:14px;color:var(--muted);text-decoration:none;padding:6px 10px;border:1px solid var(--line);border-radius:999px}
+    .lang a.active,.lang a:hover{border-color:var(--brand);color:var(--brand)}
+    .hero{position:relative;max-width:1100px;margin:28px auto 0;background:linear-gradient(180deg,#fff,#ffe7f1);border-radius:var(--radius);box-shadow:var(--shadow);padding:40px 22px;overflow:hidden}
+    .sakura{position:absolute;inset:-120px -80px auto auto;opacity:.25;pointer-events:none;height:260px;width:70%;
+      background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="240" height="240" viewBox="0 0 200 200"><g fill="%23f472b6"><path d="M92 20c5 15-6 28-6 28s-16-9-11-24 17-19 17-4z"/><path d="M146 50c-15 5-28-6-28-6s9-16 24-11 19 17 4 17z"/><path d="M126 140c-5-15 6-28 6-28s16 9 11 24-17 19-17 4z"/><path d="M64 162c15-5 28 6 28 6s-9 16-24 11-19-17-4-17z"/><circle cx="98" cy="96" r="30"/></g></svg>');
+      background-size:240px 240px;background-repeat:repeat;transform:rotate(8deg);}
+    .hero-grid{display:grid;grid-template-columns:1.35fr 1fr;align-items:center;gap:24px}
+    h1{font-size:34px;margin:0 0 12px}
+    .subtitle{color:var(--muted);margin:0 0 18px}
+    .cta{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:12px;font-weight:800;border:2px solid transparent;text-decoration:none;cursor:pointer}
+    .btn-primary{background:var(--brand);color:#fff}
+    .btn-primary:hover{filter:brightness(1.05)}
+    .btn-ghost{background:#fff;border-color:var(--line);color:var(--ink)}
+    .btn-ghost:hover{border-color:var(--brand);color:var(--brand)}
+    .section{max-width:1100px;margin:42px auto;padding:0 18px}
+    .cards{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
+    .card{grid-column:span 12;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px}
+    @media(min-width:720px){.card.span6{grid-column:span 6}.card.span12{grid-column:span 12}}
+    .card h3{margin:0 0 8px}
+    .muted{color:var(--muted)}
+    .list{margin:10px 0 0;padding-left:18px}
+    .list li{margin:6px 0}
+    .kpis{display:flex;gap:16px;flex-wrap:wrap;margin-top:10px}
+    .kpi{background:#ffe6ee;border:1px dashed var(--line);border-radius:12px;padding:8px 12px;font-size:14px}
+    .grid-2{display:grid;grid-template-columns:1fr;gap:18px}
+    @media(min-width:860px){.grid-2{grid-template-columns:1fr 1fr}}
+    .about table{width:100%;border-collapse:collapse}
+    .about td{padding:10px;border-bottom:1px solid var(--line);vertical-align:top}
+    .about td:first-child{color:var(--muted);width:160px}
+    form{display:grid;gap:12px}
+    input,textarea,select{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:#fff;font:inherit}
+    textarea{min-height:120px;resize:vertical}
+    .required:after{content:" *";color:var(--brand)}
+    .help{font-size:12px;color:var(--muted)}
+    .hr{height:1px;background:var(--line);margin:26px 0}
+    .footer{padding:28px 0 40px;text-align:center;color:var(--muted)}
+    html{scroll-behavior:smooth}
+  </style>
+</head>
+<body>
+  <!-- ヘッダー -->
+  <header>
+    <div class="nav">
+      <div class="brand">
+        <svg class="logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f472b6"/><stop offset="1" stop-color="#e11d48"/></linearGradient></defs>
+          <circle cx="24" cy="24" r="22" fill="url(#g)" opacity=".18"/>
+          <path d="M24 8c3 8-3 15-3 15s-9-5-6-13 9-9 9-2zM38 16c-8 3-15-3-15-3s5-9 13-6 9 9 2 9zM31 36c-3-8 3-15 3-15s9 5 6 13-9 9-9 2zM14 40c8-3 15 3 15 3s-5 9-13 6-9-9-2-9z" fill="#f472b6"/>
+          <circle cx="24" cy="24" r="7" fill="#e11d48"/></svg>
+        <div class="title">瑞鳳堂株式会社｜ZUIHOUDOU</div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#home">ホーム</a></li>
+          <li><a href="#services">サービス</a></li>
+          <li><a href="#about">会社概要</a></li>
+          <li><a href="#contact">お問い合わせ</a></li>
+        </ul>
+      </nav>
+      <div class="lang">
+        <a href="index.html">中文</a>
+        <a class="active" href="#">日本語</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ヒーロー -->
+  <main id="home" class="hero">
+    <div class="sakura" aria-hidden="true"></div>
+    <div class="hero-grid">
+      <div>
+        <h1>日本と中国をつなぐ、信頼のビジネスプラットフォーム</h1>
+        <p class="subtitle">日中貿易・日本不動産投資アドバイザリー・翻訳/通訳・古物販売・留学生生活支援</p>
+        <div class="cta">
+          <a href="#contact" class="btn btn-primary">今すぐ相談する</a>
+          <a href="#services" class="btn btn-ghost">サービスを見る</a>
+        </div>
+        <div class="kpis">
+          <div class="kpi">📦 正規仕入れ・追跡可能な配送</div>
+          <div class="kpi">🏠 宅建士による専門支援</div>
+          <div class="kpi">🗣️ N1レベルのビジネス通訳</div>
+        </div>
+      </div>
+      <div>
+        <!-- 箱＋さくらの挿絵 -->
+        <svg viewBox="0 0 420 300" width="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs><linearGradient id="p1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff1f7"/><stop offset="1" stop-color="#ffe4ef"/></linearGradient></defs>
+          <rect x="0" y="0" width="420" height="300" rx="16" fill="url(#p1)"/>
+          <g transform="translate(70,95)"><rect x="0" y="40" width="190" height="110" rx="10" fill="#f6d8a8" stroke="#d6a66f"/><path d="M0 40 L95 0 L190 40 Z" fill="#f1c484" stroke="#d6a66f"/><rect x="75" y="95" width="40" height="35" fill="#d6a66f" opacity=".35"/></g>
+          <g transform="translate(115,140)"><circle cx="40" cy="40" r="26" fill="#fff"/><circle cx="32" cy="38" r="4"/><circle cx="48" cy="38" r="4"/><path d="M30 48 Q40 56 50 48" stroke="#000" fill="none" stroke-linecap="round"/></g>
+          <g fill="#f472b6" opacity=".7"><circle cx="330" cy="70" r="10"/><circle cx="350" cy="90" r="7"/><circle cx="300" cy="110" r="6"/><circle cx="360" cy="140" r="8"/><circle cx="320" cy="170" r="6"/></g>
+        </svg>
+      </div>
+    </div>
+  </main>
+
+  <!-- サービス -->
+  <section id="services" class="section">
+    <h2>サービス</h2>
+    <div class="cards">
+      <article class="card span6">
+        <h3>01｜日中貿易（日本から中国へ直送）</h3>
+        <p>日本国内の正規ルートでご希望品を購入し、国際配送で<b>日本からご自宅へ直送</b>します。帰国後の継続購入をスムーズに。</p>
+        <ul class="list">
+          <li>✅ 購入証憑のご提供（透明性の高い取引）</li>
+          <li>✅ <b>商品1点につき追跡番号1つ</b>：配送状況を随時確認可能</li>
+          <li>✅ 正規品保証：並行品・偽物の排除</li>
+        </ul>
+        <p class="muted">少量・多品目対応。通関/請求書が必要な場合は備考欄へ。</p>
+      </article>
+
+      <article class="card span6">
+        <h3>02｜日本不動産投資アドバイザリー</h3>
+        <p><b>宅地建物取引士</b>が、物件購入から運用・賃貸・売却まで、実地案内や書類確認、リスク説明を含めてトータルでサポートします。</p>
+        <ul class="list">
+          <li>📍 エリア/利回り分析・キャッシュフロー試算</li>
+          <li>📝 取引プロセスや契約書のポイント説明</li>
+          <li>🏢 会社設立・経営管理ビザに関する相談</li>
+        </ul>
+      </article>
+
+      <article class="card span6">
+        <h3>03｜中国語・日本語の翻訳/通訳サービス</h3>
+        <p>留学生の生活手続きや企業の商談・契約、各種文書の翻訳まで対応いたします。</p>
+        <ul class="list">
+          <li>🗂️ 生活同行：銀行口座開設、携帯契約、印鑑登録、役所手続きなど</li>
+          <li>🤝 商談通訳：顧客面談、契約締結、会議随行</li>
+          <li>📄 文書翻訳：契約書/証明書/申請資料</li>
+        </ul>
+        <p class="muted">担当者は日本語N1＋ビジネス経験。意図とニュアンスを正確に伝えます。</p>
+      </article>
+
+      <article class="card span6">
+        <h3>04｜古物販売（書籍など）</h3>
+        <p>適法な中古取引として、日本語学習書・試験対策教材などを販売。JLPT等の取得をサポートします。</p>
+        <ul class="list">
+          <li>📚 日本語教材・参考書</li>
+          <li>🎓 学習補助用品</li>
+        </ul>
+      </article>
+
+      <article class="card span12">
+        <h3>05｜留学生生活支援</h3>
+        <p>日本に来たばかりの留学生が、スムーズに生活を始められるよう支援します。</p>
+        <ul class="list">
+          <li>✈️ 空港送迎・街案内</li>
+          <li>🏠 住居探しの相談・入居手続き</li>
+          <li>⚙️ 必要手続き：銀行/携帯/ライフライン/区市町村手続き</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- 会社＋フォーム -->
+  <section class="section grid-2" id="about">
+    <div class="card about">
+      <h2>会社概要</h2>
+      <div class="hr"></div>
+      <table>
+        <tr><td>会社名</td><td><b>瑞鳳堂株式会社（ZUIHOUDOU Co., Ltd.）</b></td></tr>
+        <tr><td>所在地</td><td>〒606-8204　京都府京都市左京区田中下柳町8-79 THINKビル 3F</td></tr>
+        <tr><td>代表取締役</td><td>劉 鳳霞</td></tr>
+        <tr><td>メール</td><td><a href="mailto:info@zuihoudou.com">info@zuihoudou.com</a></td></tr>
+        <tr><td>電話番号</td><td>075-（ご記入ください）</td></tr>
+        <tr><td>事業内容</td><td>日中貿易、日本不動産投資アドバイザリー、翻訳/通訳、古物販売、留学生生活支援</td></tr>
+        <tr><td>古物商許可</td><td>京都府公安委員会 第〇〇〇号（取得後に更新）</td></tr>
+      </table>
+      <p class="help">英語版/中国語版の会社案内PDFが必要な場合はご連絡ください。</p>
+    </div>
+
+    <div class="card" id="contact">
+      <h2>お問い合わせ</h2>
+      <p class="muted">以下のフォームにご入力ください。<b>24時間以内</b>にご返信いたします。</p>
+      <form action="https://formspree.io/f/xanlrlwn" method="POST" id="contact-form" novalidate>
+        <input type="text" name="bot-field" style="display:none" tabindex="-1" autocomplete="off">
+        <label class="required">お名前
+          <input type="text" name="name" placeholder="山田 太郎" required>
+        </label>
+        <label class="required">メールアドレス
+          <input type="email" name="email" placeholder="you@example.com" required>
+        </label>
+        <label>電話番号
+          <input type="tel" name="phone" placeholder="+81 75-xxxx-xxxx">
+        </label>
+        <label>ご相談の種類
+          <select name="topic">
+            <option value="trade">日中貿易/日本直送</option>
+            <option value="realestate">不動産投資アドバイザリー</option>
+            <option value="translation">翻訳・通訳</option>
+            <option value="kobutsu">古物販売</option>
+            <option value="student">留学生生活支援</option>
+            <option value="other">その他</option>
+          </select>
+        </label>
+        <label class="required">ご相談内容
+          <textarea name="message" placeholder="できるだけ詳しくご記入ください…" required></textarea>
+        </label>
+        <input type="hidden" name="_subject" value="【Web】瑞鳳堂サイトからの新規お問い合わせ">
+        <input type="hidden" name="_redirect" value="https://zuihoudou.com/thanks-ja.html">
+        <button class="btn btn-primary" type="submit">送信する</button>
+        <div class="help">送信により、当社がご連絡目的で情報を利用することに同意したものとみなします。</div>
+      </form>
+    </div>
+  </section>
+
+  <footer class="section footer">
+    <div class="hr"></div>
+    <div>© <span id="y"></span> 瑞鳳堂株式会社 ZUIHOUDOU Co., Ltd. All rights reserved.</div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    const form = document.getElementById('contact-form');
+    form.addEventListener('submit', function(e){
+      const required = form.querySelectorAll('[required]');
+      let ok = true;
+      required.forEach(el=>{
+        if(!el.value.trim()){ el.style.borderColor = '#e11d48'; ok=false; }
+        else { el.style.borderColor = 'var(--line'); }
+      });
+      if(!ok){ e.preventDefault(); alert('必須項目（*）を入力してください。'); }
+    });
+  </script>
+</body>
+</html>
