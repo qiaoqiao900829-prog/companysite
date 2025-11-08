@@ -1,108 +1,351 @@
 <!doctype html>
-<html lang="ja">
+<html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>瑞鳳堂株式会社 | ZUIHOUDOU Co., Ltd.</title>
-  <meta name="description" content="瑞鳳堂株式会社（京都・左京区）。翻訳（翻訳/通訳）、不動産コンサル（京都・関西）、日本商品の中国直送。">
-  <link rel="canonical" href="https://zuihoudou.com/">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="瑞鳳堂株式会社 | ZUIHOUDOU  Co., Ltd.">
-  <meta property="og:description" content="翻訳・不動産コンサル・越境EC（日本→中国直送）">
-  <meta property="og:url" content="https://zuihoudou.com/">
-  <meta name="robots" content="index, follow">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>瑞鳳堂株式会社｜ZUIHOUDOU Co., Ltd.</title>
+  <meta name="description" content="瑞鳳堂株式会社（ZUIHOUDOU）— 中日贸易、日本不动产投资顾问、翻译口译、古物销售、留学生生活支援。" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext y='52' x='6' font-size='52'/%3E%3C/svg%3E">
   <style>
     :root{
-      --bg:#fff;--fg:#111;--muted:#666;--brand:#0f172a;--accent:#8b5cf6;--line:#e5e7eb;
+      --bg:#fff9fb;
+      --card:#ffffff;
+      --ink:#1f2937;
+      --muted:#6b7280;
+      --brand:#e11d48; /* 樱花粉-红 */
+      --brand-2:#f472b6; /* 次要粉 */
+      --line:#f3e5ec;
+      --shadow:0 10px 25px rgba(0,0,0,.06);
+      --radius:18px;
     }
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Noto Sans JP", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif}
-    a{color:var(--accent);text-decoration:none}
-    header{position:sticky;top:0;backdrop-filter:saturate(180%) blur(8px);background:rgba(255,255,255,.8);border-bottom:1px solid var(--line);}
-    .wrap{max-width:1080px;margin:auto;padding:18px}
-    .row{display:flex;align-items:center;gap:16px}
-    nav{margin-left:auto;display:flex;gap:18px;flex-wrap:wrap}
-    .hero{padding:72px 0}
-    h1{font-size:40px;line-height:1.2;margin:0 0 12px}
-    h2{font-size:28px;margin:32px 0 12px}
-    .lead{color:var(--muted)}
-    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-    .card{border:1px solid var(--line);border-radius:14px;padding:18px}
-    .btn{display:inline-block;padding:10px 16px;border-radius:10px;border:1px solid var(--line);}
-    .btn-primary{background:var(--brand);color:#fff;border-color:var(--brand)}
-    footer{border-top:1px solid var(--line);margin-top:48px}
-    @media (max-width:800px){.grid{grid-template-columns:1fr} h1{font-size:30px}}
+    html,body{margin:0;padding:0;color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans SC","PingFang SC","Hiragino Sans GB",sans-serif;}
+    body{background:var(--bg);}
+
+    /* ====== 头部导航 ====== */
+    header{
+      position:sticky;top:0;z-index:50;background:rgba(255,255,255,.8);
+      backdrop-filter:saturate(160%) blur(10px); border-bottom:1px solid var(--line);
+    }
+    .nav{
+      max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:20px;
+      padding:12px 18px;
+    }
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800}
+    .brand .logo{width:34px;height:34px}
+    .brand .title{font-size:18px;letter-spacing:.02em}
+    nav ul{list-style:none;margin:0;padding:0;display:flex;gap:18px;flex-wrap:wrap}
+    nav a{color:var(--ink);text-decoration:none;font-weight:600}
+    nav a:hover{color:var(--brand)}
+    .lang{margin-left:auto;display:flex;gap:10px}
+    .lang a{font-size:14px;color:var(--muted);text-decoration:none;padding:6px 10px;border:1px solid var(--line);border-radius:999px}
+    .lang a.active,.lang a:hover{border-color:var(--brand);color:var(--brand)}
+
+    /* ====== 英雄区 ====== */
+    .hero{
+      position:relative;overflow:hidden;
+      max-width:1100px;margin:28px auto 0;background:linear-gradient(180deg,#fff,#fff6f9);
+      border-radius:var(--radius);box-shadow:var(--shadow);
+      padding:40px 22px;
+    }
+    .hero-grid{display:grid;grid-template-columns:1.35fr 1fr;align-items:center;gap:24px}
+    h1{font-size:34px;margin:0 0 12px;line-height:1.25}
+    .subtitle{color:var(--muted);margin:0 0 18px}
+    .cta{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{
+      display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:12px;font-weight:700;
+      border:2px solid transparent;text-decoration:none;cursor:pointer
+    }
+    .btn-primary{background:var(--brand);color:#fff}
+    .btn-primary:hover{filter:brightness(1.05)}
+    .btn-ghost{background:#fff;border-color:var(--line);color:var(--ink)}
+    .btn-ghost:hover{border-color:var(--brand);color:var(--brand)}
+    .sakura{
+      position:absolute;inset:-120px -80px auto auto;pointer-events:none;opacity:.15;
+      background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="220" height="220" viewBox="0 0 200 200"><g fill="%23f472b6"><path d="M92 20c5 15-6 28-6 28s-16-9-11-24 17-19 17-4z"/><path d="M146 50c-15 5-28-6-28-6s9-16 24-11 19 17 4 17z"/><path d="M126 140c-5-15 6-28 6-28s16 9 11 24-17 19-17 4z"/><path d="M64 162c15-5 28 6 28 6s-9 16-24 11-19-17-4-17z"/><circle cx="98" cy="96" r="30"/></g></svg>');
+      background-size:220px 220px; background-repeat:repeat;
+      transform:rotate(10deg);
+      height:240px;width:70%;
+    }
+
+    /* ====== 卡片区 ====== */
+    .section{max-width:1100px;margin:42px auto;padding:0 18px}
+    .cards{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
+    .card{
+      grid-column:span 12;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+      box-shadow:var(--shadow);padding:20px
+    }
+    @media(min-width:720px){ .card.span6{grid-column:span 6} .card.span4{grid-column:span 4}}
+    .card h3{margin:0 0 8px}
+    .muted{color:var(--muted)}
+    .kpis{display:flex;gap:16px;flex-wrap:wrap;margin-top:10px}
+    .kpi{background:#fff3f7;border:1px dashed var(--line);border-radius:12px;padding:8px 12px;font-size:14px}
+
+    /* ====== 服务明细 ====== */
+    .list{margin:10px 0 0;padding-left:18px}
+    .list li{margin:6px 0}
+    .box-icon{display:inline-block;width:18px;height:18px;vertical-align:-4px;margin-right:6px}
+
+    /* ====== 公司/联系 ====== */
+    .grid-2{display:grid;grid-template-columns:1fr;gap:18px}
+    @media(min-width:860px){ .grid-2{grid-template-columns:1fr 1fr}}
+    .about table{width:100%;border-collapse:collapse}
+    .about td{padding:10px;border-bottom:1px solid var(--line);vertical-align:top}
+    .about td:first-child{color:var(--muted);width:160px}
+
+    /* ====== 表单 ====== */
+    form{display:grid;gap:12px}
+    input,textarea,select{
+      width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:#fff;font:inherit
+    }
+    textarea{min-height:120px;resize:vertical}
+    .help{font-size:12px;color:var(--muted)}
+    .required:after{content:" *";color:var(--brand)}
+    .notice{font-size:13px;color:var(--muted);margin-top:6px}
+    .footer{padding:28px 0 40px;text-align:center;color:var(--muted)}
+    .hr{height:1px;background:var(--line);margin:26px 0}
+    /* 锚点滚动平滑 */
+    html{scroll-behavior:smooth}
   </style>
 </head>
 <body>
+  <!-- ====== Header ====== -->
   <header>
-    <div class="wrap row">
-      <strong>瑞鳳堂株式会社</strong>
+    <div class="nav">
+      <div class="brand">
+        <!-- 简洁樱花徽标 -->
+        <svg class="logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f472b6"/><stop offset="1" stop-color="#e11d48"/></linearGradient></defs>
+          <circle cx="24" cy="24" r="22" fill="url(#g)" opacity=".18"/>
+          <path d="M24 8c3 8-3 15-3 15s-9-5-6-13 9-9 9-2zM38 16c-8 3-15-3-15-3s5-9 13-6 9 9 2 9zM31 36c-3-8 3-15 3-15s9 5 6 13-9 9-9 2zM14 40c8-3 15 3 15 3s-5 9-13 6-9-9-2-9z" fill="#f472b6"/>
+          <circle cx="24" cy="24" r="7" fill="#e11d48"/>
+        </svg>
+        <div class="title">瑞鳳堂株式会社｜ZUIHOUDOU</div>
+      </div>
+
       <nav>
-        <a href=" ">会社概要</a >
-        <a href="#services">サービス</a >
-        <a href="#contact">お問い合わせ</a >
-        <a href="/zh/" hreflang="zh">中文</a >
+        <ul>
+          <li><a href="#home">首页</a></li>
+          <li><a href="#services">服务内容</a></li>
+          <li><a href="#about">会社概要</a></li>
+          <li><a href="#contact">联系我们</a></li>
+        </ul>
       </nav>
+
+      <div class="lang">
+        <a class="active" href="#">中文</a>
+        <a href="jp.html" title="切换到日语页面">日本語</a>
+      </div>
     </div>
   </header>
 
-  <main class="wrap">
-    <section class="hero">
-      <h1>京都から、言語と不動産と越境ECでつなぐ。</h1>
-      <p class="lead">翻訳（翻訳/通訳）・不動産コンサル（京都/関西）・日本商品の中国直送。確かな現場経験で、迅速かつ丁寧に対応します。</p >
-      <p>
-        <a class="btn btn-primary" href="#contact">今すぐ相談する</a >
-        <a class="btn" href="#services">サービスを見る</a >
-      </p >
-    </section>
-
-    <section id="about">
-      <h2>会社概要</h2>
-      <div class="card">
-        <p><strong>会社名：</strong>瑞鳳堂株式会社（ZUIHOUDOU  Co., Ltd.）</p >
-        <p><strong>所在地：</strong>京都市左京区</p >
-        <p><strong>代表者：</strong>劉鳳霞</p >
-        <p><strong>ドメイン：</strong><a href="https://zuihoudou.com/">zuihoudou.com</a ></p >
-      </div>
-    </section>
-
-    <section id="services">
-      <h2>サービス</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>翻訳（翻訳/通訳）</h3>
-          <p>ビジネス会議・商談・観光アテンド・書類翻訳（日中/中日）。即日対応もご相談ください。</p >
+  <!-- ====== Hero ====== -->
+  <main id="home" class="hero">
+    <div class="sakura" aria-hidden="true"></div>
+    <div class="hero-grid">
+      <div>
+        <h1>连接日本与中国的专业商务平台</h1>
+        <p class="subtitle">中日贸易・日本不动产投资顾问・翻译口译・古物销售・留学生生活支援</p>
+        <div class="cta">
+          <a href="#contact" class="btn btn-primary">立即咨询</a>
+          <a href="#services" class="btn btn-ghost">查看服务</a>
         </div>
-        <div class="card">
-          <h3>不動産コンサル（京都・関西）</h3>
-          <p>賃貸・売買の初期相談、物件リサーチ、内見同行、契約サポート。外国人向けサポートも可。</p >
-        </div>
-        <div class="card">
-          <h3>日本→中国 直送</h3>
-          <p>日本国内で仕入れた正規商品を、中国顧客へ安全に直送。税関・梱包・配送の実務に精通。</p >
+        <div class="kpis">
+          <div class="kpi">📦 正品采购 / 单号可追踪</div>
+          <div class="kpi">🏠 宅建士专业顾问</div>
+          <div class="kpi">🗣️ N1 商务口译</div>
         </div>
       </div>
-    </section>
-
-    <section id="contact">
-      <h2>お問い合わせ</h2>
-      <div class="card">
-        <p>メール：<a href="mailto:info@zuihoudou.com">info@zuihoudou.com</a ></p >
-        <form action="https://formspree.io/f/your_form_id" method="POST">
-          <div class="grid" style="grid-template-columns:1fr 1fr">
-            <p><label>お名前<br><input name="name" required style="width:100%"></label></p >
-            <p><label>メール<br><input type="email" name="email" required style="width:100%"></label></p >
-          </div>
-          <p><label>ご用件<br><textarea name="message" rows="5" required style="width:100%"></textarea></label></p >
-          <p><button class="btn btn-primary" type="submit">送信</button></p >
-        </form>
+      <div>
+        <!-- 卡通箱子与樱花组图（SVG） -->
+        <svg viewBox="0 0 420 300" width="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="p1" x1="0" y1="0" x2="1" y2="1">
+              <stop stop-color="#fff1f5"/><stop offset="1" stop-color="#ffe4ec"/>
+            </linearGradient>
+          </defs>
+          <rect x="0" y="0" width="420" height="300" rx="16" fill="url(#p1)"/>
+          <!-- 箱子 -->
+          <g transform="translate(70,95)">
+            <rect x="0" y="40" width="190" height="110" rx="10" fill="#f6d8a8" stroke="#d6a66f" />
+            <path d="M0 40 L95 0 L190 40 Z" fill="#f1c484" stroke="#d6a66f"/>
+            <rect x="75" y="95" width="40" height="35" fill="#d6a66f" opacity=".35"/>
+          </g>
+          <!-- 可爱笑脸 -->
+          <g transform="translate(115,140)">
+            <circle cx="40" cy="40" r="26" fill="#fff"/>
+            <circle cx="32" cy="38" r="4" /><circle cx="48" cy="38" r="4"/>
+            <path d="M30 48 Q40 56 50 48" stroke="#000" fill="none" stroke-linecap="round" />
+          </g>
+          <!-- 樱花花瓣 -->
+          <g fill="#f472b6" opacity=".7">
+            <circle cx="330" cy="70" r="10"/><circle cx="350" cy="90" r="7"/><circle cx="300" cy="110" r="6"/>
+            <circle cx="360" cy="140" r="8"/><circle cx="320" cy="170" r="6"/>
+          </g>
+        </svg>
       </div>
-    </section>
+    </div>
   </main>
 
-  <footer>
-    <div class="wrap">© ZUIHOUDOU  Co., Ltd.All rights reserved.</div>
+  <!-- ====== 服务内容 ====== -->
+  <section id="services" class="section">
+    <h2>服务内容</h2>
+    <div class="cards">
+
+      <!-- 中日贸易 -->
+      <article class="card span6">
+        <h3>01｜中日贸易（日本直邮中国）</h3>
+        <p>您来日本旅游常会买到喜欢的商品；回国后想继续购买，却需要再次来日或代购渠道不透明。我们可按清单在日本正规渠道采购，并通过国际物流 <b>从日本直邮到您家</b>。</p>
+        <ul class="list">
+          <li>✅ 提供购买凭证，来源透明</li>
+          <li>✅ <b>一件商品一个单号</b>，全程物流可追踪</li>
+          <li>✅ 正品真货保证，拒绝水货</li>
+        </ul>
+        <p class="muted">支持小批量、多品类；如需报关/发票请在下方联系表说明。</p>
+      </article>
+
+      <!-- 不动产投资顾问 -->
+      <article class="card span6">
+        <h3>02｜日本不动产投资顾问</h3>
+        <p>由 <b>日本宅建士资格</b> 的专业人员为您提供购房、经营、出租等全链路建议，协助实地带看、文件审阅与风险提示。</p>
+        <ul class="list">
+          <li>📍 地区／收益分析与现金流测算</li>
+          <li>📝 购房流程与法律文件说明</li>
+          <li>🏢 公司设立与经营管理签证相关咨询</li>
+        </ul>
+      </article>
+
+      <!-- 翻译口译 -->
+      <article class="card span6">
+        <h3>03｜中日翻译与口译服务</h3>
+        <p>适用于留学生在日生活手续、企业商务谈判与各类文书。</p>
+        <ul class="list">
+          <li>🗂️ 生活陪同：银行开户、手机卡、印章登记、政府手续</li>
+          <li>🤝 商务口译：客户会面、合同签署、会议随行</li>
+          <li>📄 文书翻译：合同/证明/申请材料</li>
+        </ul>
+        <p class="muted">服务人员日语 N1 + 商务经验，准确传达意图与语境。</p>
+      </article>
+
+      <!-- 古物销售 -->
+      <article class="card span6">
+        <h3>04｜古物销售（图书等）</h3>
+        <p>合规中古交易，提供日语学习图书与备考资料，帮助您备战 JLPT 等级考试。</p>
+        <ul class="list">
+          <li>📚 日语教材与工具书</li>
+          <li>🎓 学习辅助用品</li>
+        </ul>
+      </article>
+
+      <!-- 留学生支援 -->
+      <article class="card span12">
+        <h3>05｜留学生生活支援</h3>
+        <p>为初到日本的留学生提供落地与生活指导。</p>
+        <ul class="list">
+          <li>✈️ 接机与城市生活导览</li>
+          <li>🏠 找房咨询与入住手续</li>
+          <li>⚙️ 必要手续办理：银行/手机/水电煤/市役所登记</li>
+        </ul>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ====== 会社概要 & 联系表单 ====== -->
+  <section class="section grid-2" id="about">
+    <div class="card about">
+      <h2>会社概要</h2>
+      <div class="hr"></div>
+      <table>
+        <tr><td>会社名</td><td><b>瑞鳳堂株式会社（ZUIHOUDOU Co., Ltd.）</b></td></tr>
+        <tr><td>所在地</td><td>〒606-8204　京都府京都市左京区田中下柳町 8-79 THINKビル 3F</td></tr>
+        <tr><td>代表取締役</td><td>劉 鳳霞</td></tr>
+        <tr><td>メール</td><td><a href="mailto:info@zuihoudou.com">info@zuihoudou.com</a></td></tr>
+        <tr><td>電話番号</td><td>075-（请补全）</td></tr>
+        <tr><td>事業内容</td><td>中日贸易、日本不动产投资顾问、翻译口译、古物销售、留学生生活支援</td></tr>
+        <tr><td>古物商許可</td><td>京都府公安委員会 第〇〇〇号（取得后可更新）</td></tr>
+      </table>
+      <p class="notice">※ 如需英文/日文版公司信息，请切换右上角语言或联系我们获取 PDF 版公司介绍。</p>
+    </div>
+
+    <div class="card" id="contact">
+      <h2>联系我们</h2>
+      <p class="muted">填写表单后，我们将在 <b>24 小时内</b> 与您联系。</p>
+
+      <!-- 联系表单：Formspree -->
+      <form action="https://formspree.io/f/xanlrlwn" method="POST" id="contact-form" novalidate>
+        <!-- 反垃圾蜜罐 -->
+        <input type="text" name="bot-field" style="display:none" tabindex="-1" autocomplete="off">
+
+        <label class="required">您的姓名
+          <input type="text" name="name" placeholder="张三" required>
+        </label>
+
+        <label class="required">联系邮箱
+          <input type="email" name="email" placeholder="you@example.com" required>
+        </label>
+
+        <label>联系电话
+          <input type="tel" name="phone" placeholder="+81 75-xxxx-xxxx">
+        </label>
+
+        <label>咨询主题
+          <select name="topic">
+            <option value="trade">中日贸易/日本直邮</option>
+            <option value="realestate">不动产投资顾问</option>
+            <option value="translation">翻译与口译</option>
+            <option value="kobutsu">古物销售</option>
+            <option value="student">留学生生活支援</option>
+            <option value="other">其他</option>
+          </select>
+        </label>
+
+        <label class="required">具体需求
+          <textarea name="message" placeholder="请尽量详细描述您的需求…" required></textarea>
+        </label>
+
+        <!-- Formspree 可选字段 -->
+        <input type="hidden" name="_subject" value="网站咨询：来自 zuihoudou.com 的新消息">
+        <!-- 提交成功跳转的感谢页（需要在仓库添加 thanks.html） -->
+        <input type="hidden" name="_redirect" value="https://zuihoudou.com/thanks.html">
+
+        <button class="btn btn-primary" type="submit">
+          <!-- 盒子图标 -->
+          <svg class="box-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 7l9-5 9 5-9 5-9-5zm0 3l9 5 9-5v7l-9 5-9-5V10z" fill="currentColor"/></svg>
+          提交咨询
+        </button>
+        <div class="help">提交即表示您同意我们仅为联系之目的使用您的信息。</div>
+      </form>
+    </div>
+  </section>
+
+  <footer class="section footer">
+    <div class="hr"></div>
+    <div>© <span id="y"></span> 瑞鳳堂株式会社 ZUIHOUDOU Co., Ltd. All rights reserved.</div>
   </footer>
+
+  <script>
+    // 年份
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // 简易前端校验（防止空提交）
+    const form = document.getElementById('contact-form');
+    form.addEventListener('submit', function(e){
+      const required = form.querySelectorAll('[required]');
+      let ok = true;
+      required.forEach(el=>{
+        if(!el.value.trim()){
+          el.style.borderColor = '#e11d48';
+          ok = false;
+        }else{
+          el.style.borderColor = 'var(--line)';
+        }
+      });
+      if(!ok){
+        e.preventDefault();
+        alert('请完整填写带 * 的必填项后再提交。');
+      }
+    });
+  </script>
 </body>
 </html>
