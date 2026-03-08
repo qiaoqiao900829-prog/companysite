@@ -10,7 +10,7 @@
   <meta name="description" content="瑞鳳堂株式会社は京都市左京区を拠点に、中国語↔日本語の翻訳・通訳（銀行・印鑑・役所・医療・不動産・商談の現場通訳、契約書・各種書類の翻訳）を提供。日本語N1スタッフが迅速・丁寧に対応します。中日貿易・不動産投資アドバイザリー・古物販売・留学生支援も対応。" />
   <meta name="keywords" content="京都 日本語、中国語、翻訳 通訳,京都 中国語 通訳,日中 翻訳,京都 口訳,京都 商談 通訳,京都 生活手続 通訳,瑞鳳堂,ZUIHOUDOU">
 
-  <!-- ✅ hreflang（多言語の相互参照） -->
+  <!-- ✅ hreflang（多言語の相互参照） -->    
   <link rel="alternate" href="https://zuihoudou.com/" hreflang="zh-CN">
   <link rel="alternate" href="https://zuihoudou.com/jp.html" hreflang="ja">
   <link rel="alternate" href="https://zuihoudou.com/" hreflang="x-default">
@@ -368,198 +368,52 @@
       </table>
       <p class="help">英語／中国語のPDF会社案内もご用意できます。お問い合わせください。</p>
     </div>
+  <div class="card" id="contact">
+  <h2>お問い合わせ</h2>
+  <p class="muted">フォーム送信後、通常 1～2 営業日以内にご返信いたします。</p>
 
-    <div class="card" id="contact">
-      <h2>お問い合わせ</h2>
-      <p class="muted">フォーム送信後、<b>24時間以内</b>にご連絡いたします。</p>
-      <form action="https://formspree.io/f/xanlrlwn" method="POST" id="contact-form" novalidate>
-        <input type="text" name="bot-field" style="display:none" tabindex="-1" autocomplete="off">
-        <label class="required">お名前
-          <input type="text" name="name" placeholder="山田 太郎" required>
-        </label>
-        <label class="required">メールアドレス
-          <input type="email" name="email" placeholder="you@example.com" required>
-        </label>
-        <label>電話番号
-          <input type="tel" name="phone" placeholder="+81 75-xxxx-xxxx">
-        </label>
-        <label>ご用件
-          <select name="topic">
-            <option value="trade">中日貿易／日本直送</option>
-            <option value="realestate">不動産投資アドバイザリー</option>
-            <option value="translation">翻訳・通訳</option>
-            <option value="kobutsu">古物販売</option>
-            <option value="student">留学生生活支援</option>
-            <option value="other">その他</option>
-          </select>
-        </label>
-        <label class="required">ご相談内容
-          <textarea name="message" placeholder="できるだけ具体的にご記入ください…" required></textarea>
-        </label>
-        <input type="hidden" name="_subject" value="【JP】zuihoudou.com からのお問い合わせ">
-        <input type="hidden" name="_redirect" value="https://zuihoudou.com/thanks.html">
-        <!doctype html>
-<!doctype html>
-<html lang="ja">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>お問い合わせ完了 | 瑞鳳堂株式会社</title>
-  <meta name="description" content="お問い合わせありがとうございました。瑞鳳堂株式会社より順次ご返信いたします。">
-  <style>
-    :root{
-      --brand:#0066cc;
-      --fg:#111;
-      --muted:#666;
-      --bg:#fffafc;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-      color:var(--fg);
-      background:var(--bg);
-    }
-    .wrap{
-      max-width:880px;
-      margin:0 auto;
-      padding:32px 16px;
-    }
-    .card{
-      background:#fff;
-      border:1px solid #eee;
-      border-radius:16px;
-      padding:32px;
-      box-shadow:0 10px 24px rgba(0,0,0,.06);
-      text-align:center;
-      position:relative;
-      z-index:1;
-    }
-    h1{
-      font-size:28px;
-      margin:0 0 12px;
-    }
-    p{
-      line-height:1.9;
-      color:var(--muted);
-      margin:8px 0;
-    }
-    a.btn{
-      display:inline-block;
-      margin-top:18px;
-      background:var(--brand);
-      color:#fff;
-      text-decoration:none;
-      padding:12px 18px;
-      border-radius:10px;
-      font-weight:600;
-    }
+  <form action="https://formspree.io/f/xanlrlwn" method="POST">
+    <input type="hidden" name="_subject" value="【JP】zuihoudou.com からのお問い合わせ">
+    <input type="hidden" name="_redirect" value="https://zuihoudou.com/thanks.html">
+    <input type="text" name="_gotcha" style="display:none">
 
-    .sakura{
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-      z-index:0;
-      overflow:hidden;
-    }
-    .petal{
-      position:absolute;
-      top:-10vh;
-      width:14px;
-      height:14px;
-      background:
-        radial-gradient(closest-side,#ffb7c5 92%,#0000),
-        radial-gradient(closest-side,#ffd6e0 92%,#0000);
-      border-radius:100% 10% 90% 10% / 10% 90% 10% 90%;
-      opacity:.85;
-      animation:fall 9s linear infinite,sway 3.2s ease-in-out infinite alternate;
-    }
-    @keyframes fall{
-      to{transform:translateY(120vh) rotate(720deg)}
-    }
-    @keyframes sway{
-      from{margin-left:-20px}
-      to{margin-left:20px}
-    }
+    <label class="required">お名前
+      <input type="text" name="name" placeholder="山田 太郎" required>
+    </label>
 
-    .kawaii{
-      width:90px;
-      height:90px;
-      border-radius:20px;
-      background:#fff;
-      border:3px solid #222;
-      display:grid;
-      place-items:center;
-      margin:0 auto 12px;
-    }
-    .face{
-      position:relative;
-      width:56px;
-      height:36px;
-      border-radius:18px;
-      background:#ffe8ef;
-      border:2px solid #222;
-    }
-    .eye,.eye:after{
-      position:absolute;
-      top:8px;
-      width:8px;
-      height:8px;
-      background:#222;
-      border-radius:50%;
-    }
-    .eye{left:10px}
-    .eye:after{
-      content:"";
-      right:-28px;
-    }
-    .smile{
-      position:absolute;
-      left:50%;
-      top:18px;
-      transform:translateX(-50%);
-      width:22px;
-      height:10px;
-      border:3px solid #222;
-      border-top:0;
-      border-radius:0 0 14px 14px;
-    }
-  </style>
-</head>
-<body>
-  <div class="sakura" id="sakura"></div>
+    <label class="required">メールアドレス
+      <input type="email" name="email" placeholder="you@example.com" required>
+    </label>
 
-  <div class="wrap">
-    <div class="card">
-      <div class="kawaii">
-        <div class="face">
-          <span class="eye"></span>
-          <span class="smile"></span>
-        </div>
-      </div>
+    <label>電話番号
+      <input type="tel" name="phone" placeholder="+81 75-xxxx-xxxx">
+    </label>
 
-      <h1>お問い合わせありがとうございました！</h1>
-      <p>メッセージは正常に送信されました。</p>
-      <p>通常 1～2 営業日以内にご返信いたします。</p>
-      <p>下のボタンからトップページへお戻りいただけます。</p>
+    <label>ご用件
+      <select name="topic">
+        <option value="trade">中日貿易／日本直送</option>
+        <option value="realestate">不動産投資アドバイザリー</option>
+        <option value="translation">翻訳・通訳</option>
+        <option value="kobutsu">古物販売</option>
+        <option value="student">留学生生活支援</option>
+        <option value="other">その他</option>
+      </select>
+    </label>
 
-      <p>
-        <a class="btn" href="https://zuihoudou.com/">トップページへ戻る</a>
-      </p>
-    </div>
-  </div>
+    <label class="required">ご相談内容
+      <textarea name="message" placeholder="できるだけ具体的にご記入ください…" required></textarea>
+    </label>
 
-  <script>
-    const box = document.getElementById('sakura');
-    for(let i=0;i<35;i++){
-      const p=document.createElement('div');
-      p.className='petal';
-      p.style.left=Math.random()*100+'vw';
-      p.style.animationDelay=(Math.random()*-9)+'s';
-      p.style.animationDuration=(8+Math.random()*6)+'s';
-      p.style.opacity=(0.6+Math.random()*0.4);
-      box.appendChild(p);
-    }
-  </script>
+    <button type="submit" class="btn btn-primary">送信する</button>
+  </form>
+
+  <p class="help">送信後、確認ページへ移動します。</p>
+</div>
+</section>
+
+<div class="footer">
+  © 瑞鳳堂株式会社 ZUIHOUDOU K.K.
+</div>
+
 </body>
 </html>
