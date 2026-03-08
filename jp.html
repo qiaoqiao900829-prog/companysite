@@ -398,3 +398,61 @@
         </label>
         <input type="hidden" name="_subject" value="【JP】zuihoudou.com からのお問い合わせ">
         <input type="hidden" name="_redirect" value="https://zuihoudou.com/thanks.html">
+        <!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ありがとうございます | ZUIHOUDOU</title>
+  <meta http-equiv="refresh" content="6; url=https://zuihoudou.com/">
+  <style>
+    /* 复用基础卡片与按钮样式，独立可运行 */
+    :root{--brand:#0066cc;--fg:#111;--muted:#666;--bg:#fff;}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial; color:var(--fg); background:#fffafc;}
+    .wrap{max-width:880px;margin:0 auto;padding:28px 16px}
+    .card{background:#fff;border:1px solid #eee;border-radius:14px;padding:28px;box-shadow:0 10px 24px rgba(0,0,0,.06)}
+    h1{font-size:28px;margin:0 0 10px}
+    p{line-height:1.8;color:var(--muted);margin:8px 0}
+    a.btn{display:inline-block;background:var(--brand);color:#fff;text-decoration:none;padding:10px 16px;border-radius:10px}
+    .sakura{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+    .petal{position:absolute;top:-10vh; width:14px;height:14px; background:
+      radial-gradient(closest-side,#ffb7c5 92%,#0000) , radial-gradient(closest-side,#ffd6e0 92%,#0000);
+      border-radius:100% 10% 90% 10% / 10% 90% 10% 90%; opacity:.85;
+      animation: fall 9s linear infinite, sway 3.2s ease-in-out infinite alternate;}
+    @keyframes fall{to{transform:translateY(120vh) rotate(720deg)}}
+    @keyframes sway{from{margin-left:-20px} to{margin-left:20px}}
+    /* 简单的可爱卡通人物 */
+    .kawaii{width:90px;height:90px;border-radius:20px;background:#fff;border:3px solid #222;
+      display:grid;place-items:center;margin-bottom:10px}
+    .face{position:relative;width:56px;height:36px;border-radius:18px;background:#ffe8ef;border:2px solid #222}
+    .eye,.eye:after{position:absolute;top:8px;width:8px;height:8px;background:#222;border-radius:50%}
+    .eye{left:10px}.eye:after{content:"";right:-28px}
+    .smile{position:absolute;left:50%;top:18px;transform:translateX(-50%);width:22px;height:10px;border:3px solid #222;border-top:0;border-radius:0 0 14px 14px}
+  </style>
+</head>
+<body>
+  <div class="sakura" id="sakura"></div>
+  <div class="wrap">
+    <div class="card" style="position:relative; z-index:1">
+      <div class="kawaii"><div class="face"><span class="eye"></span><span class="smile"></span></div></div>
+      <h1>お問い合わせありがとうございました！</h1>
+      <p>メッセージは正常に送信されました。通常 1～2 営業日以内にご返信いたします。</p>
+      <p>6秒後にトップページへ自動的に戻ります。すぐ戻る場合は下のボタンを押してください。</p>
+      <p><a class="btn" href="https://zuihoudou.com/">トップへ戻る</a></p>
+    </div>
+  </div>
+  <script>
+    // 生成樱花花瓣
+    const box = document.getElementById('sakura');
+    for(let i=0;i<35;i++){
+      const p=document.createElement('div'); p.className='petal';
+      p.style.left = Math.random()*100+'vw';
+      p.style.animationDelay = (Math.random()*-9)+'s';
+      p.style.animationDuration = (8+Math.random()*6)+'s';
+      p.style.opacity = (0.6+Math.random()*0.4);
+      box.appendChild(p);
+    }
+  </script>
+</body>
+</html>
