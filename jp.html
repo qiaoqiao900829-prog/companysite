@@ -414,6 +414,44 @@
 <div class="footer">
   © 瑞鳳堂株式会社 ZUIHOUDOU K.K.
 </div>
+<script>
+  // 二维码放大
+  const qrImg = document.getElementById('qr-img');
+  const qrModal = document.getElementById('qr-modal');
+  const qrClose = document.getElementById('qr-close');
 
-</body>
+  if (qrImg && qrModal && qrClose) {
+    qrImg.addEventListener('click', function () {
+      qrModal.classList.add('open');
+      qrModal.setAttribute('aria-hidden', 'false');
+    });
+
+    qrClose.addEventListener('click', function () {
+      qrModal.classList.remove('open');
+      qrModal.setAttribute('aria-hidden', 'true');
+    });
+
+    qrModal.addEventListener('click', function (e) {
+      if (e.target === qrModal) {
+        qrModal.classList.remove('open');
+        qrModal.setAttribute('aria-hidden', 'true');
+      }
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        qrModal.classList.remove('open');
+        qrModal.setAttribute('aria-hidden', 'true');
+      }
+    });
+  }
+
+  // 手机端菜单展开
+  const menuToggle = document.getElementById('menu-toggle');
+  if (menuToggle) {
+    menuToggle.addEventListener('click', function () {
+      document.body.classList.toggle('menu-open');
+    });
+  }
+</script></body>
 </html>
