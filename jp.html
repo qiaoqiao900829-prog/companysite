@@ -75,7 +75,7 @@
       {"@type":"Question","name":"どんな通訳シーンに対応できますか？",
        "acceptedAnswer":{"@type":"Answer","text":"商務会議、顧客訪問、行政手続、銀行手続、市役所手続、病院受診、学校手続、留学生生活支援などに対応可能です。"}},
       {"@type":"Question","name":"急ぎの依頼は可能ですか？",
-       "acceptedAnswer":{"@type":"Answer","text":"可能です。ページ下部のフォーム、WeChat、LINEからご連絡ください。内容を確認の上、できる限り早くご返信いたします。"}}
+       "acceptedAnswer":{"@type":"Answer","text":"可能です。ページ下部のフォーム、LINEまたはメールからご連絡ください。内容を確認の上、できる限り早くご返信いたします。"}}
     ]
   }
   </script>
@@ -256,19 +256,13 @@
       <div>
         <div class="qr-card">
           <h3>お問い合わせ</h3>
-          <img src="wechat.jpg" alt="WeChat 二次元コード｜瑞鳳堂株式会社" loading="lazy" class="qr-click" data-title="WeChat">
-          <p class="qr-note">WeChat</p>
-
-          <hr class="qr-divider">
-
           <img src="line.jpg" alt="LINE 二次元コード｜瑞鳳堂株式会社" loading="lazy" class="qr-click" data-title="LINE">
           <p class="qr-note">LINE</p>
-
-          <p class="qr-note">WeChat・LINE・メールでお気軽にご相談ください。</p>
+          <p class="qr-note">LINE・メールでお気軽にご相談ください。</p>
         </div>
         <div class="qr-modal" id="qr-modal" aria-hidden="true">
           <button class="qr-close" id="qr-close" aria-label="閉じる">閉じる</button>
-          <img id="qr-modal-img" src="wechat.jpg" alt="QRコード拡大">
+          <img id="qr-modal-img" src="line.jpg" alt="LINE 二次元コード拡大">
         </div>
       </div>
     </div>
@@ -381,8 +375,8 @@
           <input type="email" name="email" placeholder="you@example.com" required>
         </label>
 
-        <label>電話番号 / WeChat / LINE
-          <input type="text" name="phone" placeholder="ご連絡しやすい方法をご記入ください">
+        <label>電話番号 / LINE
+          <input type="text" name="phone" placeholder="電話番号またはLINEなど、ご連絡しやすい方法をご記入ください">
         </label>
 
         <label>ご用件
@@ -413,7 +407,7 @@
   </div>
 
   <script>
-    // 二维码放大：支持 WeChat 和 LINE
+    // 二维码放大：LINE
     const qrModal = document.getElementById('qr-modal');
     const qrModalImg = document.getElementById('qr-modal-img');
     const qrClose = document.getElementById('qr-close');
