@@ -12,7 +12,7 @@
 
   <title>京都の不動産売買・賃貸仲介｜瑞鳳堂株式会社</title>
   <meta name="description" content="瑞鳳堂株式会社は、京都・関西エリアの不動産売買仲介、賃貸仲介、海外のお客様による日本の不動産購入、中国語・日本語サポートを行う宅地建物取引業者です。京都府知事（1）第15170号。">
-  <meta name="keywords" content="京都不動産,京都不動産売買,京都賃貸,京都住宅,海外投資家,日本不動産購入,中国語対応不動産,瑞鳳堂株式会社,京都宅建業者,京都通訳">
+  <meta name="keywords" content="京都不動産,京都不動産売買,京都賃貸,海外投資家,日本不動産購入,中国語対応不動産,瑞鳳堂株式会社,台湾戸籍謄本翻訳,医療通訳,学歴証明書翻訳,卒業証明書翻訳,成績証明書翻訳,京都日中翻訳">
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="京都の不動産売買・賃貸仲介｜瑞鳳堂株式会社">
@@ -144,6 +144,7 @@
     .lang a{text-decoration:none;font-size:11px;padding:5px 8px;border-bottom:1px solid transparent}
     .lang .active{background:transparent;border-color:var(--brand);color:var(--brand)}
     .lang .active{background:var(--brand);border-color:var(--brand);color:#fff}
+    .mobile-lang{display:none}
     .menu{
       display:none;margin-left:auto;border:1px solid var(--line);background:#fff;
       border-radius:10px;padding:9px 12px;min-height:44px;font-weight:700;
@@ -241,7 +242,11 @@
     .strength p{color:var(--muted);margin:0}
     .translation{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
     .translation-list{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    .translation-list div{padding:16px 18px;background:#fff;border-bottom:1px solid var(--line);font-weight:700}
+    .translation-list div{padding:16px 18px;background:#fff;border-bottom:1px solid var(--line)}
+    .translation-list b{display:block;margin-bottom:5px}.translation-list span{display:block;color:var(--muted);font-size:12px;line-height:1.6}
+    .site-search{padding:34px 0;background:#fff;border-bottom:1px solid var(--line)}
+    .search-box{display:flex;gap:10px;align-items:center;max-width:850px}.search-box input{flex:1;border:1px solid var(--line);border-radius:8px;padding:13px 15px;font:inherit;font-size:15px}.search-box input:focus{outline:2px solid #d9b75d;border-color:var(--brand)}
+    .search-results{display:none;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:14px;max-width:950px}.search-results.has-query{display:grid}.search-results a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:13px 15px;background:#faf9f5}.search-results a:hover{border-color:var(--brand);transform:translateY(-1px)}.search-results b{display:block}.search-results span{display:block;margin-top:4px;color:var(--muted);font-size:12px}.search-empty{display:none;color:var(--muted);margin:12px 0 0}.search-empty.show{display:block}
 
     .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
     .panel{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:36px}
@@ -289,6 +294,9 @@
       body.menu-open nav{display:block;position:absolute;top:68px;left:0;right:0;background:#fff;border-bottom:1px solid var(--line);padding:12px 18px}
       body.menu-open nav ul{display:flex;flex-direction:column;align-items:stretch;gap:0}
       body.menu-open nav a{display:block;padding:12px}
+      body.menu-open nav .mobile-lang{display:flex;gap:8px;padding:12px;border-top:1px solid var(--line);margin-top:6px}
+      body.menu-open nav .mobile-lang a{flex:1;padding:9px 6px;text-align:center;border:1px solid var(--line);border-radius:6px;background:#fff;color:var(--text)}
+      body.menu-open nav .mobile-lang a.active{background:var(--brand);border-color:var(--brand);color:#fff}
       .hero{padding:58px 0}
       .hero-copy{padding:0}
       section{padding:66px 0}
@@ -309,6 +317,7 @@
       .request-card{grid-template-columns:96px 1fr;text-align:left;padding:18px;gap:18px}
       .request-card img{width:96px;height:96px}
       .flow,.translation-list{grid-template-columns:1fr}
+      .search-box{display:block}.search-box input{width:100%}.search-results{grid-template-columns:1fr}
       .qr-wrap{grid-template-columns:1fr}
       .qr-wrap img{width:112px;height:112px}
       .actions .btn{width:100%}
@@ -332,7 +341,9 @@
           <li><a href="#requests">物件探しフォーム</a></li>
           <li><a href="#guides">売買・賃貸ガイド</a></li>
           <li><a href="#company">会社概要</a></li>
+          <li><a href="#translation">翻訳・通訳</a></li>
           <li><a href="#contact">お問い合わせ</a></li>
+          <li class="mobile-lang" aria-label="モバイル言語切替"><a href="index.html">简体</a><a href="tw.html">繁體</a><a class="active" href="jp.html">日本語</a></li>
         </ul>
       </nav>
       <div class="lang" aria-label="言語切替">
@@ -342,6 +353,18 @@
       </div>
     </div>
   </header>
+
+  <section class="site-search" id="site-search">
+    <div class="container"><span class="eyebrow">SITE SEARCH</span><h2>瑞鳳堂のサービスを検索</h2><div class="search-box"><input id="site-search-input" type="search" placeholder="例：台湾戸籍謄本、医療通訳、不動産購入、賃貸…" autocomplete="off"></div><div class="search-results" id="site-search-results">
+      <a href="#translation" data-search="台湾 戸籍謄本 戶籍謄本 户籍誊本 日本語翻訳 法務局 証明書"><b>台湾の戸籍謄本・日本語翻訳</b><span>法務局等への提出用翻訳、原稿に準じたレイアウト、会社印対応。</span></a>
+      <a href="#translation" data-search="医療通訳 医療翻訳 医療 病院 診察 問診 同行 通訳 翻訳"><b>医療同行・診察通訳</b><span>病院受診、検査、説明、関連手続の日中通訳サポート。</span></a>
+      <a href="#translation" data-search="契約 証明 戸籍 文書 法律 入管 学校 翻訳"><b>契約書・証明書・文書翻訳</b><span>法務局、入管、学校、ビジネス手続等に使用する日中文書翻訳。</span></a>
+      <a href="#translation" data-search="学歴 学歴証明書 卒業証明書 卒業証書 学位記 成績証明書 成績表 学校 入管 翻訳"><b>学歴・卒業証明書・成績証明書の翻訳</b><span>学校、入管及び各種手続への提出用日中翻訳とレイアウト調整。</span></a>
+      <a href="#translation" data-search="ビジネス 会議 オンライン 通訳 客接"><b>ビジネス・会議・オンライン通訳</b><span>商談、会議、客接、オンライン打合せの日中通訳。</span></a>
+      <a href="#realestate" data-search="不動産 購入 売却 投資 外国人 海外 京都"><b>不動産売買仲介</b><span>京都・関西の居住用、投資用、売却、海外客の購入サポート。</span></a>
+      <a href="#realestate" data-search="賃貸 部屋探し 留学生 外国人 京都 入居"><b>賃貸仲介・生活手続サポート</b><span>部屋探し、内見、入居申込み、審查資料及び関連生活手続。</span></a>
+    </div><p class="search-empty" id="site-search-empty">該当するサービスが見つかりません。メールまたは LINE で具体的な内容をお知らせください。</p></div>
+  </section>
 
   <main id="home">
     <section class="hero">
@@ -585,10 +608,13 @@
           <a class="btn btn-light" href="#contact">翻訳・通訳を相談する</a>
         </div>
         <div class="translation-list">
-          <div>商談・会議・お客様対応</div>
-          <div>医療同行・診察通訳</div>
-          <div>市役所・銀行等の手続き同行</div>
-          <div>契約書・証明書・文書翻訳</div>
+          <div><b>台湾の戸籍謄本・日本語翻訳</b><span>表裏の翻訳、原稿に準じたレイアウト、翻訳者情報及び瑞鳳堂の会社印に対応。法務局等の提出用。</span></div>
+          <div><b>医療同行・診察通訳</b><span>予約確認、受診同行、問診、検査、医療説明の日中通訳。</span></div>
+          <div><b>契約書・証明書・公式文書翻訳</b><span>法務局、入管、学校その他機関への提出用日中文書翻訳。</span></div>
+          <div><b>学歴証明書・卒業証明書・成績証明書の翻訳</b><span>学歴、学位、卒業及び成績証明の日中翻訳。学校または提出先の指定に応じてレイアウトします。</span></div>
+          <div><b>ビジネス会議・客接</b><span>企業間の商談、会議、客接及びビジネス資料の翻訳。</span></div>
+          <div><b>市役所・銀行等の手続通訳</b><span>行政窓口、銀行、公共サービス及び生活手続の同行通訳。</span></div>
+          <div><b>オンライン日中通訳</b><span>案件内容に応じ、オンライン会議、ビデオまたは電話通訳を协議できます。</span></div>
         </div>
       </div>
     </section>
@@ -684,6 +710,8 @@
   </footer>
 
   <script>
+    const searchInput=document.getElementById('site-search-input'),searchResults=document.getElementById('site-search-results'),searchEmpty=document.getElementById('site-search-empty');
+    if(searchInput&&searchResults){const items=[...searchResults.querySelectorAll('[data-search]')];const runSearch=()=>{const q=searchInput.value.trim().toLowerCase(),terms=q.split(/\s+/).filter(Boolean);let shown=0;items.forEach(item=>{const hay=(item.dataset.search+' '+item.textContent).toLowerCase(),ok=!!q&&terms.every(t=>hay.includes(t));item.hidden=!ok;if(ok)shown++});searchResults.classList.toggle('has-query',!!q);searchEmpty?.classList.toggle('show',!!q&&!shown)};searchInput.addEventListener('input',runSearch);searchInput.addEventListener('keydown',e=>{if(e.key==='Enter'){const first=items.find(x=>!x.hidden);if(first){e.preventDefault();first.click()}}});}
     const menuButton = document.getElementById('menu-toggle');
     if(menuButton){
       menuButton.addEventListener('click',()=>{
