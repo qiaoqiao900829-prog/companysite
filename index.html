@@ -12,7 +12,7 @@
 
   <title>京都不动产买卖・租赁仲介｜中文对应｜瑞鳳堂株式会社</title>
   <meta name="description" content="瑞鳳堂株式会社是京都府正式宅建业者，提供京都及关西地区不动产买卖仲介、租赁仲介、海外客户赴日购房与中文支持。宅建业免许：京都府知事（1）第15170号。">
-  <meta name="keywords" content="京都不动产,京都买房,京都租房,日本买房,海外人士日本买房,京都中文房产中介,京都房地产,瑞鳳堂株式会社,京都宅建业者,京都翻译">
+  <meta name="keywords" content="京都不动产,京都买房,京都租房,日本买房,海外人士日本买房,京都中文房产中介,瑞鳳堂株式会社,台湾户籍謄本翻译,医疗翻译,学历证书翻译,毕业证书翻译,成绩单翻译,京都中日翻译">
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="京都不动产买卖・租赁仲介｜瑞鳳堂株式会社">
@@ -144,6 +144,7 @@
     .lang a{text-decoration:none;font-size:11px;padding:5px 8px;border-bottom:1px solid transparent}
     .lang .active{background:transparent;border-color:var(--brand);color:var(--brand)}
     .lang .active{background:var(--brand);border-color:var(--brand);color:#fff}
+    .mobile-lang{display:none}
     .menu{
       display:none;margin-left:auto;border:1px solid var(--line);background:#fff;
       border-radius:10px;padding:9px 12px;min-height:44px;font-weight:700;
@@ -241,7 +242,11 @@
     .strength p{color:var(--muted);margin:0}
     .translation{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
     .translation-list{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    .translation-list div{padding:16px 18px;background:#fff;border-bottom:1px solid var(--line);font-weight:700}
+    .translation-list div{padding:16px 18px;background:#fff;border-bottom:1px solid var(--line)}
+    .translation-list b{display:block;margin-bottom:5px}.translation-list span{display:block;color:var(--muted);font-size:12px;line-height:1.6}
+    .site-search{padding:34px 0;background:#fff;border-bottom:1px solid var(--line)}
+    .search-box{display:flex;gap:10px;align-items:center;max-width:850px}.search-box input{flex:1;border:1px solid var(--line);border-radius:8px;padding:13px 15px;font:inherit;font-size:15px}.search-box input:focus{outline:2px solid #d9b75d;border-color:var(--brand)}
+    .search-results{display:none;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:14px;max-width:950px}.search-results.has-query{display:grid}.search-results a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:13px 15px;background:#faf9f5}.search-results a:hover{border-color:var(--brand);transform:translateY(-1px)}.search-results b{display:block}.search-results span{display:block;margin-top:4px;color:var(--muted);font-size:12px}.search-empty{display:none;color:var(--muted);margin:12px 0 0}.search-empty.show{display:block}
 
     .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
     .panel{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:36px}
@@ -289,6 +294,9 @@
       body.menu-open nav{display:block;position:absolute;top:68px;left:0;right:0;background:#fff;border-bottom:1px solid var(--line);padding:12px 18px}
       body.menu-open nav ul{display:flex;flex-direction:column;align-items:stretch;gap:0}
       body.menu-open nav a{display:block;padding:12px}
+      body.menu-open nav .mobile-lang{display:flex;gap:8px;padding:12px;border-top:1px solid var(--line);margin-top:6px}
+      body.menu-open nav .mobile-lang a{flex:1;padding:9px 6px;text-align:center;border:1px solid var(--line);border-radius:6px;background:#fff;color:var(--text)}
+      body.menu-open nav .mobile-lang a.active{background:var(--brand);border-color:var(--brand);color:#fff}
       .hero{padding:58px 0}
       .hero-copy{padding:0}
       section{padding:66px 0}
@@ -309,6 +317,7 @@
       .request-card{grid-template-columns:96px 1fr;text-align:left;padding:18px;gap:18px}
       .request-card img{width:96px;height:96px}
       .flow,.translation-list{grid-template-columns:1fr}
+      .search-box{display:block}.search-box input{width:100%}.search-results{grid-template-columns:1fr}
       .qr-wrap{grid-template-columns:1fr}
       .qr-wrap img{width:112px;height:112px}
       .actions .btn{width:100%}
@@ -332,7 +341,9 @@
           <li><a href="#requests">找房问卷</a></li>
           <li><a href="#guides">买房・租房攻略</a></li>
           <li><a href="#company">公司信息</a></li>
+          <li><a href="#translation">翻译业务</a></li>
           <li><a href="#contact">联系我们</a></li>
+          <li class="mobile-lang" aria-label="手机版语言切换"><a class="active" href="index.html">简体</a><a href="tw.html">繁體</a><a href="jp.html">日本語</a></li>
         </ul>
       </nav>
       <div class="lang" aria-label="语言切换">
@@ -342,6 +353,18 @@
       </div>
     </div>
   </header>
+
+  <section class="site-search" id="site-search">
+    <div class="container"><span class="eyebrow">SITE SEARCH</span><h2>搜索瑞鳳堂服务</h2><div class="search-box"><input id="site-search-input" type="search" placeholder="输入：台湾户籍謄本、医疗翻译、买房、租房…" autocomplete="off"></div><div class="search-results" id="site-search-results">
+      <a href="#translation" data-search="台湾 户籍謄本 户籍誊本 日文翻译 法务局 证明书"><b>台湾户籍謄本日文翻译</b><span>法务局等提交用的日文翻译、排版及公司印章。</span></a>
+      <a href="#translation" data-search="医疗翻译 医疗口译 医疗 医院 看病 问诊 陪同 口译 翻译"><b>医疗陪同・问诊翻译</b><span>医院就诊、检查、说明和手续的中日口译支持。</span></a>
+      <a href="#translation" data-search="合同 证明 户籍 文书 法律 入管 学校 翻译"><b>合同・证明・文书翻译</b><span>法务局、入管、学校及商务手续等中日文书翻译。</span></a>
+      <a href="#translation" data-search="学历 学历证书 毕业证 毕业证书 学位证 成绩单 成绩证明 学校 入管 翻译"><b>学历・毕业证书・成绩单翻译</b><span>学校、入管及各类手续提交用的中日文翻译与格式整理。</span></a>
+      <a href="#translation" data-search="商务 会议 线上 通译 口译 客户接待"><b>商务・会议・线上口译</b><span>会议、客户接待及远程沟通的中日口译。</span></a>
+      <a href="#realestate" data-search="不动产 买房 卖房 投资 外国人 海外 京都"><b>不动产买卖仲介</b><span>京都及关西地区的自住、投资、出售与海外客户购房支持。</span></a>
+      <a href="#realestate" data-search="租房 租赁 留学生 外国人 京都 入居"><b>租赁仲介・生活手续支援</b><span>找房、看房、入住申请、审查资料及相关生活手续。</span></a>
+    </div><p class="search-empty" id="site-search-empty">没有找到相关项目。您可以通过邮箱或微信告诉我们具体需求。</p></div>
+  </section>
 
   <main id="home">
     <section class="hero">
@@ -585,10 +608,13 @@
           <a class="btn btn-light" href="#contact">咨询翻译服务</a>
         </div>
         <div class="translation-list">
-          <div>商务会议・客户接待</div>
-          <div>医疗陪同・问诊翻译</div>
-          <div>市役所・银行等手续</div>
-          <div>合同・证明・文书翻译</div>
+          <div><b>台湾户籍謄本日文翻译</b><span>正反面翻译、原格式排版、翻译者信息及瑞鳳堂公司印章。适用于法务局等提交。</span></div>
+          <div><b>医疗陪同・问诊翻译</b><span>预约确认、就诊陪同、问诊、检查及医疗说明的中日口译。</span></div>
+          <div><b>合同・证明・官方文书翻译</b><span>法务局、入管、学校及其他机构提交用的中日文书翻译。</span></div>
+          <div><b>学历证书・毕业证书・成绩单翻译</b><span>学历、学位、毕业及成绩证明的中日翻译，可根据学校或提交机构要求排版。</span></div>
+          <div><b>商务会议・客户接待</b><span>公司洽谈、会议、客户接待及商务资料翻译。</span></div>
+          <div><b>市役所・银行等手续口译</b><span>行政窗口、银行、公共服务及生活手续的陪同口译。</span></div>
+          <div><b>线上中日口译</b><span>可根据案件内容协商远程会议、视频或电话口译。</span></div>
         </div>
       </div>
     </section>
@@ -684,6 +710,8 @@
   </footer>
 
   <script>
+    const searchInput=document.getElementById('site-search-input'),searchResults=document.getElementById('site-search-results'),searchEmpty=document.getElementById('site-search-empty');
+    if(searchInput&&searchResults){const items=[...searchResults.querySelectorAll('[data-search]')];const runSearch=()=>{const q=searchInput.value.trim().toLowerCase(),terms=q.split(/\s+/).filter(Boolean);let shown=0;items.forEach(item=>{const hay=(item.dataset.search+' '+item.textContent).toLowerCase(),ok=!!q&&terms.every(t=>hay.includes(t));item.hidden=!ok;if(ok)shown++});searchResults.classList.toggle('has-query',!!q);searchEmpty?.classList.toggle('show',!!q&&!shown)};searchInput.addEventListener('input',runSearch);searchInput.addEventListener('keydown',e=>{if(e.key==='Enter'){const first=items.find(x=>!x.hidden);if(first){e.preventDefault();first.click()}}});}
     const menuButton = document.getElementById('menu-toggle');
     if(menuButton){
       menuButton.addEventListener('click',()=>{
