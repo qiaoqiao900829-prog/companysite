@@ -246,7 +246,7 @@
     .translation-list b{display:block;margin-bottom:5px}.translation-list span{display:block;color:var(--muted);font-size:12px;line-height:1.6}
     .site-search{padding:34px 0;background:#fff;border-bottom:1px solid var(--line)}
     .search-box{display:flex;gap:10px;align-items:center;max-width:850px}.search-box input{flex:1;border:1px solid var(--line);border-radius:8px;padding:13px 15px;font:inherit;font-size:15px}.search-box input:focus{outline:2px solid #d9b75d;border-color:var(--brand)}
-    .search-results{display:none;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:14px;max-width:950px}.search-results.has-query{display:grid}.search-results a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:13px 15px;background:#faf9f5}.search-results a:hover{border-color:var(--brand);transform:translateY(-1px)}.search-results b{display:block}.search-results span{display:block;margin-top:4px;color:var(--muted);font-size:12px}.search-empty{display:none;color:var(--muted);margin:12px 0 0}.search-empty.show{display:block}
+    .search-results{display:none;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:14px;max-width:950px}.search-results.has-query{display:grid}.search-results a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:13px 15px;background:#faf9f5}.search-results a[hidden]{display:none!important}.search-results a:hover{border-color:var(--brand);transform:translateY(-1px)}.search-results b{display:block}.search-results span{display:block;margin-top:4px;color:var(--muted);font-size:12px}.search-empty{display:none;color:var(--muted);margin:12px 0 0}.search-empty.show{display:block}
 
     .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
     .panel{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:36px}
@@ -356,7 +356,7 @@
 
   <section class="site-search" id="site-search">
     <div class="container"><span class="eyebrow">SITE SEARCH</span><h2>瑞鳳堂のサービスを検索</h2><div class="search-box"><input id="site-search-input" type="search" placeholder="例：台湾戸籍謄本、医療通訳、不動産購入、賃貸…" autocomplete="off"></div><div class="search-results" id="site-search-results">
-      <a href="#translation" data-search="台湾 戸籍謄本 戶籍謄本 户籍誊本 日本語翻訳 法務局 証明書"><b>台湾の戸籍謄本・日本語翻訳</b><span>法務局等への提出用翻訳、原稿に準じたレイアウト、会社印対応。</span></a>
+      <a href="#translation" data-search="台湾 台灣 戸籍謄本 戶籍謄本 户籍謄本 户籍誊本 戶籍藤本 户籍藤本 日本語翻訳 法務局 証明書"><b>台湾の戸籍謄本・日本語翻訳</b><span>法務局等への提出用翻訳、原稿に準じたレイアウト、会社印対応。</span></a>
       <a href="#translation" data-search="医療通訳 医療翻訳 医療 病院 診察 問診 同行 通訳 翻訳"><b>医療同行・診察通訳</b><span>病院受診、検査、説明、関連手続の日中通訳サポート。</span></a>
       <a href="#translation" data-search="契約 証明 戸籍 文書 法律 入管 学校 翻訳"><b>契約書・証明書・文書翻訳</b><span>法務局、入管、学校、ビジネス手続等に使用する日中文書翻訳。</span></a>
       <a href="#translation" data-search="学歴 学歴証明書 卒業証明書 卒業証書 学位記 成績証明書 成績表 学校 入管 翻訳"><b>学歴・卒業証明書・成績証明書の翻訳</b><span>学校、入管及び各種手続への提出用日中翻訳とレイアウト調整。</span></a>
@@ -711,7 +711,7 @@
 
   <script>
     const searchInput=document.getElementById('site-search-input'),searchResults=document.getElementById('site-search-results'),searchEmpty=document.getElementById('site-search-empty');
-    if(searchInput&&searchResults){const items=[...searchResults.querySelectorAll('[data-search]')];const runSearch=()=>{const q=searchInput.value.trim().toLowerCase(),terms=q.split(/\s+/).filter(Boolean);let shown=0;items.forEach(item=>{const hay=(item.dataset.search+' '+item.textContent).toLowerCase(),ok=!!q&&terms.every(t=>hay.includes(t));item.hidden=!ok;if(ok)shown++});searchResults.classList.toggle('has-query',!!q);searchEmpty?.classList.toggle('show',!!q&&!shown)};searchInput.addEventListener('input',runSearch);searchInput.addEventListener('keydown',e=>{if(e.key==='Enter'){const first=items.find(x=>!x.hidden);if(first){e.preventDefault();first.click()}}});}
+    if(searchInput&&searchResults){const items=[...searchResults.querySelectorAll('[data-search]')],normalize=s=>String(s||'').toLowerCase().replace(/[臺台]/g,'台').replace(/[戶戸]/g,'户').replace(/[謄誊藤]/g,'謄').replace(/[・·,，。、\/／_\-]/g,'').replace(/\s+/g,'');const runSearch=()=>{const q=searchInput.value.trim(),terms=q.split(/\s+/).map(normalize).filter(Boolean);let shown=0;items.forEach(item=>{const hay=normalize(item.dataset.search+' '+item.textContent),ok=terms.length>0&&terms.every(t=>hay.includes(t));item.hidden=!ok;if(ok)shown++});searchResults.classList.toggle('has-query',!!q);searchEmpty?.classList.toggle('show',!!q&&!shown)};searchInput.addEventListener('input',runSearch);searchInput.addEventListener('search',runSearch);searchInput.addEventListener('keydown',e=>{if(e.key==='Enter'){const first=items.find(x=>!x.hidden);if(first){e.preventDefault();first.click()}}});}
     const menuButton = document.getElementById('menu-toggle');
     if(menuButton){
       menuButton.addEventListener('click',()=>{
