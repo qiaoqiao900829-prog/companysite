@@ -1,1 +1,227 @@
-<!doctype html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>房源管理｜瑞鳳堂株式会社</title><link rel="stylesheet" href="property.css"><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js"></script></head><body class="admin-page"><main class="admin-wrap"><section class="admin-card login-card" id="login"><span class="eyebrow">ZUIHOUDOU ADMIN</span><h1>房源管理后台</h1><p>请使用已登记的管理员邮箱登录。</p><form id="login-form" class="admin-form"><div class="full"><label>邮箱</label><input id="login-email" type="email" required autocomplete="username"></div><div class="full"><label>密码</label><input id="login-password" type="password" required autocomplete="current-password"></div><div class="full"><button class="button" type="submit" style="width:100%">登录</button></div></form><div id="login-message"></div></section><section id="dashboard" class="hidden"><div class="admin-toolbar"><div><span class="eyebrow">ZUIHOUDOU ADMIN</span><h1 style="margin:4px 0">房源管理</h1></div><div><a class="button secondary" href="properties.html?type=rent&lang=zh-cn" target="_blank">查看公开页面</a> <button class="button secondary" id="logout">退出</button></div></div><div id="message"></div><div class="admin-grid"><aside class="admin-card"><button class="button" id="new-property" style="width:100%;margin-bottom:15px">＋ 新建房源</button><div class="admin-list" id="property-list"></div></aside><section class="admin-card"><form id="property-form"><input type="hidden" id="property-id"><div class="admin-form"><div><label>业务类型</label><select id="business-type"><option value="rent">租赁</option><option value="sale">买卖</option></select></div><div><label>公开状态</label><select id="status"><option value="draft">草稿（不公开）</option><option value="published">公开</option><option value="reserved">商谈中</option><option value="closed">已下架</option></select></div><div><label>物件编号</label><input id="property-code"></div><div><label>显示顺序</label><input id="display-order" type="number" value="0"></div><div class="full"><label>日文名称（必填）</label><input id="title-ja" required></div><div><label>简体中文名称</label><input id="title-zh-cn"></div><div><label>繁体中文名称</label><input id="title-zh-tw"></div><div class="full"><label>日文介绍</label><textarea id="description-ja"></textarea></div><div><label>简体中文介绍</label><textarea id="description-zh-cn"></textarea></div><div><label>繁体中文介绍</label><textarea id="description-zh-tw"></textarea></div><div class="full"><label>完整地址（后台保存）</label><input id="address-ja"></div><div><label>公开地址</label><input id="address-public" placeholder="例如：京都市左京区"></div><div><label>区域</label><input id="area-name" placeholder="例如：出町柳"></div><div><label>线路</label><input id="railway-line" placeholder="例如：京阪本線"></div><div><label>最近车站</label><input id="nearest-station"></div><div><label>步行分钟</label><input id="station-walk" type="number"></div><div><label>学校（多个用逗号分隔）</label><input id="schools" placeholder="京都大学, 同志社大学"></div><div><label>其他车站（多个用逗号分隔）</label><input id="stations"></div><div><label>租金（日元）</label><input id="rent" type="number"></div><div><label>管理费（日元）</label><input id="management-fee" type="number"></div><div><label>敷金</label><input id="deposit" placeholder="例如：1个月"></div><div><label>礼金</label><input id="key-money" placeholder="例如：1个月"></div><div><label>买卖价格（日元）</label><input id="sale-price" type="number"></div><div><label>户型</label><input id="floor-plan" placeholder="例如：1K"></div><div><label>面积（㎡）</label><input id="area-sqm" type="number" step="0.01"></div><div><label>楼层</label><input id="floor-info"></div><div><label>建造年份</label><input id="building-age"></div><div><label>构造</label><input id="structure"></div><div><label>可入住日期</label><input id="available-date"></div><div><label>特色（多个用逗号分隔）</label><input id="features" placeholder="角部屋, オートロック"></div><div><label><input id="foreigner-allowed" type="checkbox" style="width:auto"> 外国籍可咨询</label></div><div><label><input id="student-allowed" type="checkbox" style="width:auto"> 学生可咨询</label></div><div><label><input id="pet-allowed" type="checkbox" style="width:auto"> 宠物可咨询</label></div><div class="full"><label>照片／视频（可一次选择多个）</label><input id="media-files" type="file" multiple accept="image/jpeg,image/png,image/webp,image/gif,video/mp4,video/webm,video/quicktime"></div></div><div class="admin-actions"><button class="button" type="submit">保存房源</button><button class="button secondary" type="button" id="clear-form">清空</button><button class="button danger hidden" type="button" id="delete-property">删除房源</button></div></form><div id="media-section" class="hidden"><h3>已上传照片／视频</h3><div class="media-list" id="media-list"></div></div></section></div></section></main><script src="property-common.js"></script><script src="admin.js"></script></body></html>
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>房源管理｜瑞鳳堂株式会社</title>
+<link rel="stylesheet" href="property.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+</script>
+<script src="supabase-config.js">
+</script>
+</head>
+<body class="admin-page">
+<main class="admin-wrap">
+<section class="admin-card login-card" id="login">
+<span class="eyebrow">ZUIHOUDOU ADMIN</span>
+<h1>房源管理后台</h1>
+<p>请使用已登记的管理员邮箱登录。</p>
+<form id="login-form" class="admin-form">
+<div class="full">
+<label>邮箱</label>
+<input id="login-email" type="email" required autocomplete="username">
+</div>
+<div class="full">
+<label>密码</label>
+<input id="login-password" type="password" required autocomplete="current-password">
+</div>
+<div class="full">
+<button class="button" type="submit" style="width:100%">登录</button>
+</div>
+</form>
+<div id="login-message">
+</div>
+</section>
+<section id="dashboard" class="hidden">
+<div class="admin-toolbar">
+<div>
+<span class="eyebrow">ZUIHOUDOU ADMIN</span>
+<h1 style="margin:4px 0">房源管理</h1>
+</div>
+<div>
+<a class="button secondary" href="properties.html?type=rent&lang=zh-cn" target="_blank">查看公开页面</a> <button class="button secondary" id="logout">退出</button>
+</div>
+</div>
+<div id="message">
+</div>
+<div class="admin-grid">
+<aside class="admin-card">
+<button class="button" id="new-property" style="width:100%;margin-bottom:15px">＋ 新建房源</button>
+<div class="admin-list" id="property-list">
+</div>
+</aside>
+<section class="admin-card">
+<form id="property-form">
+<input type="hidden" id="property-id">
+<div class="admin-form">
+<div>
+<label>业务类型</label>
+<select id="business-type">
+<option value="rent">租赁</option>
+<option value="short">短租房</option>
+<option value="sale">买卖</option>
+</select>
+</div>
+<div>
+<label>公开状态</label>
+<select id="status">
+<option value="draft">草稿（不公开）</option>
+<option value="published">公开</option>
+<option value="reserved">商谈中</option>
+<option value="closed">已下架</option>
+</select>
+</div>
+<div>
+<label>物件编号</label>
+<input id="property-code">
+</div>
+<div>
+<label>显示顺序</label>
+<input id="display-order" type="number" value="0">
+</div>
+<div class="full">
+<label>日文名称（必填）</label>
+<input id="title-ja" required>
+</div>
+<div>
+<label>简体中文名称</label>
+<input id="title-zh-cn">
+</div>
+<div>
+<label>繁体中文名称</label>
+<input id="title-zh-tw">
+</div>
+<div class="full">
+<label>日文介绍</label>
+<textarea id="description-ja">
+</textarea>
+</div>
+<div>
+<label>简体中文介绍</label>
+<textarea id="description-zh-cn">
+</textarea>
+</div>
+<div>
+<label>繁体中文介绍</label>
+<textarea id="description-zh-tw">
+</textarea>
+</div>
+<div class="full">
+<label>完整地址（后台保存）</label>
+<input id="address-ja">
+</div>
+<div>
+<label>公开地址</label>
+<input id="address-public" placeholder="例如：京都市左京区">
+</div>
+<div>
+<label>区域</label>
+<input id="area-name" placeholder="例如：出町柳">
+</div>
+<div>
+<label>线路</label>
+<input id="railway-line" placeholder="例如：京阪本線">
+</div>
+<div>
+<label>最近车站</label>
+<input id="nearest-station">
+</div>
+<div>
+<label>步行分钟</label>
+<input id="station-walk" type="number">
+</div>
+<div>
+<label>学校（多个用逗号分隔）</label>
+<input id="schools" placeholder="京都大学, 同志社大学">
+</div>
+<div>
+<label>其他车站（多个用逗号分隔）</label>
+<input id="stations">
+</div>
+<div>
+<label>租金（日元）</label>
+<input id="rent" type="number">
+</div>
+<div>
+<label>管理费（日元）</label>
+<input id="management-fee" type="number">
+</div>
+<div>
+<label>敷金</label>
+<input id="deposit" placeholder="例如：1个月">
+</div>
+<div>
+<label>礼金</label>
+<input id="key-money" placeholder="例如：1个月">
+</div>
+<div>
+<label>买卖价格（日元）</label>
+<input id="sale-price" type="number">
+</div>
+<div>
+<label>户型</label>
+<input id="floor-plan" placeholder="例如：1K">
+</div>
+<div>
+<label>面积（㎡）</label>
+<input id="area-sqm" type="number" step="0.01">
+</div>
+<div>
+<label>楼层</label>
+<input id="floor-info">
+</div>
+<div>
+<label>建造年份</label>
+<input id="building-age">
+</div>
+<div>
+<label>构造</label>
+<input id="structure">
+</div>
+<div>
+<label>可入住日期</label>
+<input id="available-date">
+</div>
+<div>
+<label>特色（多个用逗号分隔）</label>
+<input id="features" placeholder="角部屋, オートロック">
+</div>
+<div>
+<label>
+<input id="foreigner-allowed" type="checkbox" style="width:auto"> 外国籍可咨询</label>
+</div>
+<div>
+<label>
+<input id="student-allowed" type="checkbox" style="width:auto"> 学生可咨询</label>
+</div>
+<div>
+<label>
+<input id="pet-allowed" type="checkbox" style="width:auto"> 宠物可咨询</label>
+</div>
+<div class="full">
+<label>照片／视频（可一次选择多个）</label>
+<input id="media-files" type="file" multiple accept="image/jpeg,image/png,image/webp,image/gif,video/mp4,video/webm,video/quicktime">
+</div>
+</div>
+<div class="admin-actions">
+<button class="button" type="submit">保存房源</button>
+<button class="button secondary" type="button" id="clear-form">清空</button>
+<button class="button danger hidden" type="button" id="delete-property">删除房源</button>
+</div>
+</form>
+<div id="media-section" class="hidden">
+<h3>已上传照片／视频</h3>
+<div class="media-list" id="media-list">
+</div>
+</div>
+</section>
+</div>
+</section>
+</main>
+<script src="property-common.js">
+</script>
+<script src="admin.js">
+</script>
+</body>
+</html>
