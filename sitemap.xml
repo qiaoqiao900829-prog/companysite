@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://zuihoudou.com/</loc><lastmod>2026-09-05</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://zuihoudou.com/jp.html</loc><lastmod>2026-09-05</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://zuihoudou.com/tw.html</loc><lastmod>2026-09-05</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://zuihoudou.com/properties.html?type=rent&amp;lang=zh-cn</loc><lastmod>2026-09-05</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url>
+  <url><loc>https://zuihoudou.com/properties.html?type=short&amp;lang=zh-cn</loc><lastmod>2026-09-05</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url>
+  <url><loc>https://zuihoudou.com/properties.html?type=sale&amp;lang=zh-cn</loc><lastmod>2026-09-05</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url>
+  <url><loc>https://zuihoudou.com/properties.html?type=rent&amp;lang=ja</loc><lastmod>2026-09-05</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://zuihoudou.com/properties.html?type=short&amp;lang=ja</loc><lastmod>2026-09-05</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://zuihoudou.com/properties.html?type=sale&amp;lang=ja</loc><lastmod>2026-09-05</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://zuihoudou.com/properties.html?type=rent&amp;lang=zh-tw</loc><lastmod>2026-09-05</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://zuihoudou.com/properties.html?type=short&amp;lang=zh-tw</loc><lastmod>2026-09-05</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://zuihoudou.com/properties.html?type=sale&amp;lang=zh-tw</loc><lastmod>2026-09-05</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
+</urlset>

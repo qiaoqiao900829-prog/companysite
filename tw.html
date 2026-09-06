@@ -655,6 +655,11 @@
           <p><b>電話</b><br><a href="tel:+81757085269">075-708-5269</a></p>
           <form class="contact-form" action="https://formspree.io/f/xanlrlwn" method="POST" id="contact-form" novalidate>
             <input type="text" name="bot-field" hidden tabindex="-1" autocomplete="off">
+            <div id="property-inquiry-note" class="notice" hidden></div>
+            <input type="hidden" name="property_name">
+            <input type="hidden" name="property_code">
+            <input type="hidden" name="property_id">
+            <input type="hidden" name="property_url">
             <label class="required">您的姓名
               <input type="text" name="name" placeholder="請輸入姓名" required>
             </label>
@@ -730,6 +735,14 @@
     document.getElementById('year').textContent = new Date().getFullYear();
     const contactForm = document.getElementById('contact-form');
     if(contactForm){
+      const params=new URLSearchParams(location.search),property=params.get('property');
+      if(property){
+        const code=params.get('property_code')||'',id=params.get('property_id')||'',url=params.get('property_url')||'';
+        contactForm.elements.property_name.value=property;contactForm.elements.property_code.value=code;contactForm.elements.property_id.value=id;contactForm.elements.property_url.value=url;
+        contactForm.elements.topic.value=params.get('property_type')==='sale'?'buy':'rent';
+        contactForm.elements._subject.value='物件諮詢｜'+property+(code?'｜'+code:'');
+        const note=document.getElementById('property-inquiry-note');note.textContent='正在諮詢：'+property+(code?'（物件編號：'+code+'）':'');note.hidden=false;
+      }
       contactForm.addEventListener('submit',event=>{
         let valid = true;
         contactForm.querySelectorAll('[required]').forEach(field=>{
