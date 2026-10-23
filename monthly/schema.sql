@@ -62,6 +62,16 @@ using (exists(select 1 from public.monthly_admins a where a.user_id=auth.uid()))
 create policy "monthly requests admin update" on public.monthly_requests for update to authenticated
 using (exists(select 1 from public.monthly_admins a where a.user_id=auth.uid()))
 with check(exists(select 1 from public.monthly_admins a where a.user_id=auth.uid()));
+-- Additional administrator SELECT policies: draft/disabled settings must remain editable.
+create policy "monthly settings admin read" on public.monthly_settings for select to authenticated
+using (exists(select 1 from public.monthly_admins a where a.user_id=auth.uid()));
+create policy "monthly blocks admin read" on public.monthly_blocks for select to authenticated
+using (exists(select 1 from public.monthly_admins a where a.user_id=auth.uid()));
+-- Exclusion constraint prevents two approved bookings from overlapping.
+create extension if not exists btree_gist;
+alter table public.monthly_requests add constraint monthly_no_approved_overlap
+exclude using gist (property_id with =, daterange(start_date,end_date,'[)') with &&)
+where (status='approved');
 -- Public request creation must be implemented via a server-side endpoint / Edge Function
 -- with spam controls, validation, rate limits and authoritative pricing. No anon INSERT policy.
 -- Register the existing admin user manually after reviewing auth.users:
