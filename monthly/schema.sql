@@ -48,25 +48,23 @@ using (enabled and exists(select 1 from public.properties p where p.id=property_
 create policy "monthly blocks public read" on public.monthly_blocks for select to anon,authenticated
 using (exists(select 1 from public.monthly_settings s where s.property_id=monthly_blocks.property_id and s.enabled));
 -- Admin access is limited to users explicitly listed in monthly_admins.
-create table if not exists public.monthly_admins(user_id uuid primary key references auth.users(id));
-alter table public.monthly_admins enable row level security;
-create policy "monthly admins self read" on public.monthly_admins for select to authenticated using(user_id=auth.uid());
+-- Reuse the existing public.admin_users table, so existing admins need no second enrollment.
 create policy "monthly settings admin all" on public.monthly_settings for all to authenticated
-using (exists(select 1 from public.monthly_admins a where a.user_id=auth.uid()))
-with check(exists(select 1 from public.monthly_admins a where a.user_id=auth.uid()));
+using (exists(select 1 from public.admin_users a where a.user_id=auth.uid()))
+with check(exists(select 1 from public.admin_users a where a.user_id=auth.uid()));
 create policy "monthly blocks admin all" on public.monthly_blocks for all to authenticated
-using (exists(select 1 from public.monthly_admins a where a.user_id=auth.uid()))
-with check(exists(select 1 from public.monthly_admins a where a.user_id=auth.uid()));
+using (exists(select 1 from public.admin_users a where a.user_id=auth.uid()))
+with check(exists(select 1 from public.admin_users a where a.user_id=auth.uid()));
 create policy "monthly requests admin read" on public.monthly_requests for select to authenticated
-using (exists(select 1 from public.monthly_admins a where a.user_id=auth.uid()));
+using (exists(select 1 from public.admin_users a where a.user_id=auth.uid()));
 create policy "monthly requests admin update" on public.monthly_requests for update to authenticated
-using (exists(select 1 from public.monthly_admins a where a.user_id=auth.uid()))
-with check(exists(select 1 from public.monthly_admins a where a.user_id=auth.uid()));
+using (exists(select 1 from public.admin_users a where a.user_id=auth.uid()))
+with check(exists(select 1 from public.admin_users a where a.user_id=auth.uid()));
 -- Additional administrator SELECT policies: draft/disabled settings must remain editable.
 create policy "monthly settings admin read" on public.monthly_settings for select to authenticated
-using (exists(select 1 from public.monthly_admins a where a.user_id=auth.uid()));
+using (exists(select 1 from public.admin_users a where a.user_id=auth.uid()));
 create policy "monthly blocks admin read" on public.monthly_blocks for select to authenticated
-using (exists(select 1 from public.monthly_admins a where a.user_id=auth.uid()));
+using (exists(select 1 from public.admin_users a where a.user_id=auth.uid()));
 -- Exclusion constraint prevents two approved bookings from overlapping.
 create extension if not exists btree_gist;
 alter table public.monthly_requests add constraint monthly_no_approved_overlap
@@ -74,5 +72,4 @@ exclude using gist (property_id with =, daterange(start_date,end_date,'[)') with
 where (status='approved');
 -- Public request creation must be implemented via a server-side endpoint / Edge Function
 -- with spam controls, validation, rate limits and authoritative pricing. No anon INSERT policy.
--- Register the existing admin user manually after reviewing auth.users:
--- insert into public.monthly_admins(user_id) values ('YOUR_EXISTING_AUTH_USER_UUID');
+-- Existing public.admin_users membership controls admin access.
