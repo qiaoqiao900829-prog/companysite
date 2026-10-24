@@ -4,3 +4,5 @@ $('peak-add').onclick=()=>{const a=$('peak-start').value,b=$('peak-end').value;i
 
 async function loadUnit(){const {data,error}=await SB.from('monthly_units').select('unit_type,parent_property_id').eq('property_id',current).maybeSingle();if(error)return msg('读取整栋房间关联失败：'+error.message,true);$('unit-type').value=data?.unit_type||'independent';$('parent-property').value=data?.parent_property_id||''}
 $('save-unit').onclick=async()=>{const type=$('unit-type').value,parent=$('parent-property').value;if(!current)return;if(type==='room'&&(!parent||parent===current))return msg('请选择不同于当前房源的所属整栋。',true);if(type!=='room'&&parent)return msg('只有单独房间需要选择所属整栋。',true);const {error}=await SB.from('monthly_units').upsert({property_id:current,unit_type:type,parent_property_id:type==='room'?parent:null},{onConflict:'property_id'});msg(error?'关联保存失败：'+error.message:'整栋／房间关联已保存。',!!error)};
+
+if(window.zuihouMonthlyReady)window.zuihouMonthlyReady();
