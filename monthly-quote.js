@@ -13,8 +13,16 @@ box.innerHTML='<h2>'+T.title+'</h2><div style="display:grid;grid-template-column
 const $=id=>box.querySelector('#'+id);$('mq-calc').onclick=async()=>{const a=$('mq-start').value,b=$('mq-end').value,g=Number($('mq-guests').value),n=(date(b)-date(a))/86400000,res=$('mq-result');res.replaceChildren();
 if(!a||!b||!Number.isInteger(n)||n<Number(s.min_nights)||!Number.isInteger(g)||g<1||g>Number(s.max_guests)){res.textContent=T.invalid+'（最少 '+s.min_nights+' 晚）';return}
 const {data:unit,error:unitError}=await SB.from('monthly_units').select('unit_type,parent_property_id').eq('property_id',id).maybeSingle();if(unitError){res.textContent='无法核实关联房源，请邮件咨询。';return}let linked=[id];if(unit?.unit_type==='room'&&unit.parent_property_id)linked.push(unit.parent_property_id);if(unit?.unit_type==='whole'){const {data:rooms,error:roomsError}=await SB.from('monthly_units').select('property_id').eq('parent_property_id',id);if(roomsError){res.textContent='无法核实关联房间，请邮件咨询。';return}linked.push(...(rooms||[]).map(x=>x.property_id))}const {data:blocks,error:be}=await SB.from('monthly_blocks').select('start_date,end_date').in('property_id',linked).lt('start_date',b).gt('end_date',a);if(be){res.textContent='无法确认空房日期，请联系公司。';return}if((blocks||[]).some(x=>overlap(a,b,x.start_date,x.end_date))){res.textContent=T.unavailable;return}
-const rent=Number(s.monthly_rent)*n/30,utilities=n*(Number(s.utilities_per_person_day)+Math.max(0,g-1)*Number(s.extra_person_day)),peak=peakDays(a,b,Array.isArray(s.peak_periods)?s.peak_periods:[])*Number(s.peak_surcharge_day),deposit=Number(s.deposit),fee=Number(s.contract_fee),total=Math.round(rent+utilities+peak+deposit+fee);
-const rows=[['租金',rent],['水电煤',utilities],['旺季加价',peak],[T.fee,0],['合同手续费',fee],['可退押金',deposit],[T.total,total]];
+const mode=s.price_mode||'thirty_day',monthRates=s.calendar_month_rates||{};let rent=0;
+if(mode==='daily')rent=Number(s.daily_rent||0)*n;
+else if(mode==='calendar'){for(let t=date(a);t<date(b);t+=86400000){const dt=new Date(t),m=dt.getUTCMonth()+1,year=dt.getUTCFullYear(),days=new Date(Date.UTC(year,m,0)).getUTCDate(),monthly=Number(monthRates[String(year)+'-'+String(m).padStart(2,'0')]??monthRates[String(m)]??s.monthly_rent);rent+=monthly/days}}
+else rent=Number(s.monthly_rent)*n/30;
+const utilities=n*(Number(s.utilities_per_person_day)+Math.max(0,g-1)*Number(s.extra_person_day));
+const peak=mode==='calendar'?0:peakDays(a,b,Array.isArray(s.peak_periods)?s.peak_periods:[])*Number(s.peak_surcharge_day);
+const beddingQty=Number($('mq-bedding').value);if(!Number.isInteger(beddingQty)||beddingQty<0||beddingQty>30){res.textContent='请确认床品套数';return}
+const bedding=Math.max(0,beddingQty-Number(s.included_bedding??1))*Number(s.bedding_fee||0),cleaning=Number(s.cleaning_fee||0),deposit=Number(s.deposit),fee=Number(s.contract_fee);
+rent=Math.round(rent);const total=Math.round(rent+utilities+peak+bedding+cleaning+deposit+fee);
+const rows=[['租金',rent],['水电煤',utilities],['旺季加价',peak],['床品费用',bedding],['退房清扫费',cleaning],['合同手续费',fee],['可退押金',deposit],['住宿费用合计',total-deposit],[T.total,total]].filter(([label,value])=>value!==0||label===T.total||label==='住宿费用合计');
 for(const [label,value] of rows){const line=document.createElement('p');line.textContent=label+'：'+yen(value);if(label===T.total)line.style.fontWeight='bold';res.appendChild(line)}
 const link=document.createElement('a');link.className='button';link.textContent=T.contact;const title=p.title_zh_cn||p.title_ja||p.property_code||id;link.href='mailto:info@zuihoudou.com?subject='+encodeURIComponent('月租咨询：'+title)+'&body='+encodeURIComponent('房源：'+title+'\n入住：'+a+'\n退房：'+b+'\n人数：'+g+'\n试算费用：'+yen(total)+'\n请确认空房及签约条件。');res.appendChild(link);
 };
