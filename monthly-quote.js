@@ -17,14 +17,14 @@ const mode=s.price_mode||'thirty_day',monthRates=s.calendar_month_rates||{};let 
 if(mode==='daily')rent=Number(s.daily_rent||0)*n;
 else if(mode==='calendar'){for(let t=date(a);t<date(b);t+=86400000){const dt=new Date(t),m=dt.getUTCMonth()+1,year=dt.getUTCFullYear(),days=new Date(Date.UTC(year,m,0)).getUTCDate(),monthly=Number(monthRates[String(year)+'-'+String(m).padStart(2,'0')]??monthRates[String(m)]??s.monthly_rent);rent+=monthly/days}}
 else rent=Number(s.monthly_rent)*n/30;
-const utilities=n*(Number(s.utilities_per_person_day)+Math.max(0,g-1)*Number(s.extra_person_day));
+const baseUtility=Number(s.utilities_per_person_day||0),additionalUtility=Number(s.extra_person_day||0);const utilities=n*(baseUtility+Math.max(0,g-1)*additionalUtility);
 const peak=mode==='calendar'?0:peakDays(a,b,Array.isArray(s.peak_periods)?s.peak_periods:[])*Number(s.peak_surcharge_day);
 const beddingQty=Number($('mq-bedding')?.value??s.included_bedding??1);if(!Number.isInteger(beddingQty)||beddingQty<0||beddingQty>30){res.textContent='请确认床品套数';return}
 const bedding=Math.max(0,beddingQty-Number(s.included_bedding??1))*Number(s.bedding_fee||0),cleaning=Number(s.cleaning_fee||0),deposit=Number(s.deposit),fee=Number(s.contract_fee);
 rent=Math.round(rent);const total=Math.round(rent+utilities+peak+bedding+cleaning+deposit+fee);
-const rows=[['租金',rent],['水电煤',utilities],['旺季加价',peak],['床品费用',bedding],['退房清扫费',cleaning],['合同手续费',fee],['可退押金',deposit],['住宿费用合计',total-deposit],[T.total,total]].filter(([label,value])=>value!==0||label===T.total||label==='住宿费用合计');
-for(const [label,value] of rows){const line=document.createElement('p');line.textContent=label+'：'+yen(value);if(label===T.total)line.style.fontWeight='bold';res.appendChild(line)}
-const link=document.createElement('a');link.className='button';link.textContent=T.contact;const title=p.title_zh_cn||p.title_ja||p.property_code||id;link.href='mailto:info@zuihoudou.com?subject='+encodeURIComponent('月租咨询：'+title)+'&body='+encodeURIComponent('房源：'+title+'\n入住：'+a+'\n退房：'+b+'\n人数：'+g+'\n试算费用：'+yen(total)+'\n请确认空房及签约条件。');res.appendChild(link);
+const rows=[['租金（'+n+'晚）',rent],['水电煤（'+g+'人 × '+n+'天；首人'+yen(baseUtility)+'/天'+(g>1?'，其余'+(g-1)+'人各'+yen(additionalUtility)+'/天':'')+'）',utilities],['旺季加价',peak],['床品费用',bedding],['退房清扫费',cleaning],['合同手续费',fee],['可退押金',deposit],['住宿费用合计',total-deposit],[T.total,total]].filter(([label,value])=>value!==0||label===T.total||label==='住宿费用合计');
+const stay=document.createElement('p');stay.textContent=(ja?'宿泊日数：':tw?'入住天數：':'入住天数：')+n+(ja?'泊':tw?'晚':'晚')+'（'+a+' → '+b+'）';stay.style.fontWeight='600';res.appendChild(stay);for(const [label,value] of rows){const line=document.createElement('p');line.textContent=label+'：'+yen(value);if(label===T.total)line.style.fontWeight='bold';res.appendChild(line)}
+if(deposit>0){const depositNote=document.createElement('p');depositNote.textContent=ja?'保証金'+yen(deposit)+'：退去当日に室内を確認し、問題がなければ返金します。':tw?'押金'+yen(deposit)+'：退房當天檢查房屋，確認沒有問題後退還。':'押金'+yen(deposit)+'：退房当天检查房屋，确认没有问题后退还。';depositNote.style.cssText='font-size:14px;color:#555;line-height:1.7';res.appendChild(depositNote)}const link=document.createElement('a');link.className='button';link.textContent=T.contact;const title=p.title_zh_cn||p.title_ja||p.property_code||id;link.href='mailto:info@zuihoudou.com?subject='+encodeURIComponent('月租咨询：'+title)+'&body='+encodeURIComponent('房源：'+title+'\n入住：'+a+'\n退房：'+b+'\n人数：'+g+'\n试算费用：'+yen(total)+'\n请确认空房及签约条件。');res.appendChild(link);
 }catch(e){console.error('Quote calculation error',e);$('mq-result').textContent='计算遇到错误，请联系瑞鳳堂确认报价。';}
 };
 }
